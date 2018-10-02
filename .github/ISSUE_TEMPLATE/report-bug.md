@@ -1,6 +1,6 @@
 ---
 name: Report bug
-about: Describe in detail the issue
+about: Describe the issue
 
 ---
 
