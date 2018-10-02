@@ -5,6 +5,7 @@ Use cases/ features:
 
 users 
 - user accounts
+- user registration
 - email
 - password
 - favorite movies, cast, crew
