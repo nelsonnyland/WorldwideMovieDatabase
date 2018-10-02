@@ -14,7 +14,8 @@ users
 - rate movies
 - rate actors
 - rate directors/producers/writers
-- View In Theaters/ coming soon	- View events (film festivals, award ceremonies)
+- View In Theaters/ coming soon	
+- View events (film festivals, award ceremonies)
 - ads
 - contact
 - trailers
