@@ -20,7 +20,7 @@ namespace WorldwideMovieDatabase.Models
         public DateTime DeathDate { get; set; }
 
         // Actor, Producer, Director
-        public Movie[] Titles { get; set; }
+        public List<Movie> Titles { get; set; }
 
         // "Mel Columcille Gerard Gibson..."
         public string Bio { get; set; }
