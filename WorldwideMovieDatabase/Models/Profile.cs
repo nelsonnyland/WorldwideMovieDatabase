@@ -13,6 +13,9 @@ namespace WorldwideMovieDatabase.Models
         // Mel Gibson - First & Last Name
         public string Name { get; set; }
 
+        // ex actor, director, composer
+        public string Professions { get; set; }
+
         // month/day/year of birth
         public DateTime BirthDate { get; set; }
 
