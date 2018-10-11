@@ -14,7 +14,7 @@ namespace WorldwideMovieDatabase.Models
         public string Name { get; set; }
 
         // ex actor, director, composer
-        public string Professions { get; set; }
+        public List<string> Professions { get; set; }
 
         // month/day/year of birth
         public DateTime BirthDate { get; set; }
