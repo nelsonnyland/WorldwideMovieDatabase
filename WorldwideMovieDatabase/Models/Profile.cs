@@ -15,6 +15,9 @@ namespace WorldwideMovieDatabase.Models
         // Mel Gibson - First & Last Name
         public string Name { get; set; }
 
+        // movies they worked in
+        public List<Movie> Movies { get; set; }
+
         // month/day/year of birth
         public DateTime BirthDate { get; set; }
 
@@ -22,7 +25,7 @@ namespace WorldwideMovieDatabase.Models
         public DateTime DeathDate { get; set; }
 
         // Actor, Producer, Director
-        public Movie[] Titles { get; set; }
+        public List<string> Titles { get; set; }
 
         // "Mel Columcille Gerard Gibson..."
         public string Bio { get; set; }
