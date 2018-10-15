@@ -31,9 +31,6 @@ namespace WorldwideMovieDatabase.Models
         // "When his secret bride is executed..."
         public string Description { get; set; }
 
-        // Mel Gibson - Director
-        public string Director { get; set; }
-
         // Mel Gibson, Sophie Marceau...
         public List<Profile> Actors { get; set; }
     }
