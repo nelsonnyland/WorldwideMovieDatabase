@@ -23,7 +23,7 @@ namespace WorldwideMovieDatabase.Models
         public string MPAARating { get; set; }
 
         // 2h 58min - movie runtime
-        public string MovieLength { get; set; }
+        public TimeSpan MovieLength { get; set; }
 
         // Drama - genre
         public string Genre { get; set; }
@@ -35,6 +35,6 @@ namespace WorldwideMovieDatabase.Models
         public string Director { get; set; }
 
         // Mel Gibson, Sophie Marceau...
-        public string[] Actors { get; set; }
+        public List<Profile> Actors { get; set; }
     }
 }
