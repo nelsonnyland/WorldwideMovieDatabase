@@ -1,16 +1,13 @@
-﻿
-* {
+﻿* {
     font-family: Calibri;
     text-decoration: none;
     list-style-type: none;
     text-align: center;
     display: inline;
     font-size: 97%;
-    margin: 0%;
-    /*
 }
-*/
-    /*
+
+/*
 header {
     float: left;
     font-family: Bahnschrift;
@@ -26,6 +23,7 @@ header {
     padding-right: 0%;
     padding-bottom: 0.4%;
     padding-left: 1.7%;
+    margin: 0%;
     margin-top: 0%;
     margin-right: 0.3%;
     margin-bottom: 0%;

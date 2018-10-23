@@ -1,31 +1,24 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-    <title>@ViewBag.Title</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/Content/Homepage.css" />
-</head>
-
-<body>
-
-    <header>
-        <nav>
-            <ul>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        @RenderBody()
-    </main>
-
-    <footer></footer>
-
-</body>
-
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="~/Content/Layout.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer></footer>
+    </body>
 </html>
