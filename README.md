@@ -1,6 +1,8 @@
 # Worldwide Movie Database
 #### *A school website project for hosting an online database storing information on movies and the movie industry.*
 
+![Demonstration](https://github.com/nelsonnyland/WorldwideMovieDatabase/blob/master/WMDb.JPG?raw=true)
+
 #### FEATURES:
 
 Homepage:
@@ -31,4 +33,3 @@ Additional Features:
 - [ ] ad placement
 - [ ] contact information
 - [ ] trailers and videos
-
