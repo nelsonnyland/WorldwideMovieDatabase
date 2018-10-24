@@ -1,5 +1,5 @@
 # Worldwide Movie Database
-### *A school website project for hosting an online database storing information on movies and the movie industry.*
+#### *A school website project for hosting an online database storing information on movies and the movie industry.*
 
 #### FEATURES:
 
