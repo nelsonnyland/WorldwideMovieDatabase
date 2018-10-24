@@ -1,29 +1,34 @@
 # Worldwide Movie Database
-#### *This is class project website to host an online database storing information on movies.*
+### *A school website project for hosting an online database storing information on movies and the movie industry.*
 
-#### Features:
+#### FEATURES:
 
-#### Users 
+Homepage:
+- [ ] View In Theaters/ coming soon
+- [ ] recommended movies
+- [ ] View events (film festivals, award ceremonies)
+
+CRUD:
+- [ ] CRUD Movies
+- [ ] CRUD Profiles
+
+Accounts:
+- [ ] administrator accounts
 - [ ] user accounts
 - [ ] user registration
 - [ ] email
 - [ ] password
+
+Functionality:
 - [ ] favorite movies, cast, crew
-- [ ] 5 star rating system
 - [ ] view top rated movies, cast, crew by release date, WMD rating, user rating
+- [ ] 5 star rating system
 - [ ] rate movies
 - [ ] rate actors
 - [ ] rate directors/producers/writers
-- [ ] View In Theaters/ coming soon	
-- [ ] View events (film festivals, award ceremonies)
-- [ ] ads
-- [ ] contact
-- [ ] trailers
-- [ ] recommended movies
 	
+Additional Features:
+- [ ] ad placement
+- [ ] contact information
+- [ ] trailers and videos
 
-#### Administrators
-- [ ] administrator accounts
-- [ ] CRUD Pictures
-- [ ] CRUD Description
-- [ ] CRUD cast/crew
