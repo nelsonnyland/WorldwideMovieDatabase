@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201810151953189_DbSet.Designer.cs">
       <DependentUpon>201810151953189_DbSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810240625068_ProfileAndMovie.cs" />
+    <Compile Include="Migrations\201810240625068_ProfileAndMovie.Designer.cs">
+      <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810151953189_DbSet.resx">
       <DependentUpon>201810151953189_DbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810240625068_ProfileAndMovie.resx">
+      <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
