@@ -191,6 +191,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +203,10 @@
     <Compile Include="Migrations\201810240625068_ProfileAndMovie.cs" />
     <Compile Include="Migrations\201810240625068_ProfileAndMovie.Designer.cs">
       <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810250459484_ProfileMovieNames.cs" />
+    <Compile Include="Migrations\201810250459484_ProfileMovieNames.Designer.cs">
+      <DependentUpon>201810250459484_ProfileMovieNames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -279,6 +285,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Profiles\Create.cshtml" />
+    <Content Include="Views\Profiles\Delete.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
+    <Content Include="Views\Profiles\Edit.cshtml" />
+    <Content Include="Views\Profiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810240625068_ProfileAndMovie.resx">
       <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810250459484_ProfileMovieNames.resx">
+      <DependentUpon>201810250459484_ProfileMovieNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,15 +16,19 @@ namespace WorldwideMovieDatabase.Models
         public string Title { get; set; }
 
         // 1995 - Release Year
-        public DateTime ReleaseYear { get; set; }
+        [Display(Name = "Release Date")]
+        public DateTime ReleaseDate { get; set; }
 
         // 8.4 - 861,254 users
+        [Display(Name = "User Rating")]
         public double UserRating { get; set; }
 
         // R - Mature Audiences
+        [Display(Name = "MPAA Rating")]
         public string MPAARating { get; set; }
 
         // 2h 58min - movie runtime
+        [Display(Name = "Movie Length")]
         public TimeSpan MovieLength { get; set; }
 
         // Drama - genre
