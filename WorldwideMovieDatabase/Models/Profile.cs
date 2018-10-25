@@ -19,9 +19,11 @@ namespace WorldwideMovieDatabase.Models
         public List<Movie> Movies { get; set; }
 
         // month/day/year of birth
+        [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
 
         // month/day/year of death, null if still alive
+        [Display(Name = "Date of Death")]
         public DateTime DeathDate { get; set; }
 
         // Actor, Producer, Director
@@ -31,6 +33,7 @@ namespace WorldwideMovieDatabase.Models
         public string Bio { get; set; }
 
         // "~/Images/..." - path for image
+        [Display(Name = "Profile Picture URL")]
         public string ProfilePicture { get; set; }
     }
 }
