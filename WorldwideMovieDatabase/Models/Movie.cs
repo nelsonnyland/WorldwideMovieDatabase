@@ -29,7 +29,7 @@ namespace WorldwideMovieDatabase.Models
 
         // 2h 58min - movie runtime
         [Display(Name = "Movie Length")]
-        public TimeSpan MovieLength { get; set; }
+        public string MovieLength { get; set; }
 
         // Drama - genre
         public string Genre { get; set; }
