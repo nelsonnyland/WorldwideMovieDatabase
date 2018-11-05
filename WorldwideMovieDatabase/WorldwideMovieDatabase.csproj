@@ -240,6 +240,7 @@
     <Content Include="Images\The Shawshank Redemption.jpg" />
     <Content Include="Resources\WMD_Homepage.vsdx" />
     <Content Include="Resources\WMD_Movies.vsdx" />
+    <None Include="Properties\PublishProfiles\WorldwideMovieDatabase - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
