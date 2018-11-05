@@ -25,7 +25,10 @@
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.ReleaseDate)
+                @{
+                    string releaseDate = Model.ReleaseDate.ToShortDateString();
+                }
+                @Html.DisplayFor(model => releaseDate)
             </dd>
     
             <dt>

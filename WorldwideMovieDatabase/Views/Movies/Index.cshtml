@@ -42,7 +42,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                @{ 
+                    string releaseDate = item.ReleaseDate.ToShortDateString();
+                }
+                @Html.DisplayFor(modelItem => releaseDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserRating)
