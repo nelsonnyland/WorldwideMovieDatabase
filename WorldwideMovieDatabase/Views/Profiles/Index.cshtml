@@ -35,10 +35,14 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
+            @{ 
+                string birthDate = item.BirthDate.ToShortDateString();
+                string deathDate = item.DeathDate.ToShortDateString();
+            }
+            @Html.DisplayFor(modelItem => birthDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DeathDate)
+            @Html.DisplayFor(modelItem => deathDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Bio)
