@@ -46,7 +46,7 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseYear,UserRating,MPAARating,MovieLength,Genre,Description")] Movie movie)
+        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,UserRating,MPAARating,MovieLength,Genre,Description")] Movie movie)
         {
             if (ModelState.IsValid)
             {
