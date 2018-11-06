@@ -13,12 +13,19 @@ namespace WorldwideMovieDatabase.Models
         public int ID { get; set; }
         
         // Braveheart - Title
+        //Instead of a comment example you could put a documentation comment. Then it pops
+        //up in Intellisense
+        /// <summary>
+        /// Title of the Movie. Ex. Braveheart
+        /// </summary>
         public string Title { get; set; }
 
         // 1995 - Release Year
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
 
+        //since UserRating is a double you can only store one value like 8.4, the comment is a little misleading
+        //You could say AverageUserRating
         // 8.4 - 861,254 users
         [Display(Name = "User Rating")]
         public double UserRating { get; set; }

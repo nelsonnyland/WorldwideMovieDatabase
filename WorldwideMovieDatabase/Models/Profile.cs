@@ -23,6 +23,9 @@ namespace WorldwideMovieDatabase.Models
         public DateTime BirthDate { get; set; }
 
         // month/day/year of death, null if still alive
+        //I would replace all these single line comments with documentation comments
+        //If you want DeathDate to be optional, make sure you use a nullable type. DateTime?
+        //Otherwise, since datetime is a structure is always has a value, nulls are not allowed
         [Display(Name = "Date of Death")]
         public DateTime DeathDate { get; set; }
 
