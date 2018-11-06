@@ -10,6 +10,7 @@ using WorldwideMovieDatabase.Models;
 
 namespace WorldwideMovieDatabase.Controllers
 {
+    //All the database functionality should be contained in a separate class
     public class MoviesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
