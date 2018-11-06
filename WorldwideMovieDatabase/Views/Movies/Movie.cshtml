@@ -5,20 +5,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>@Model.Title</title>
 </head>
 <body>
     <div>
-        <h4>Movie</h4>
+        <h4>@Model.Title</h4>
+        <hr />
+        <img src="@Url.Content(Model.MoviePoster)" />
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
     
             <dt>
                 @Html.DisplayNameFor(model => model.ReleaseDate)
