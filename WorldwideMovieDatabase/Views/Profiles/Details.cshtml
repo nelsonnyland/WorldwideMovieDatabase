@@ -23,11 +23,7 @@
         </dt>
 
         <dd>
-            @{
-                string birthDate = Model.BirthDate.ToShortDateString();
-                string deathDate = Model.DeathDate.ToShortDateString();
-            }
-            @Html.DisplayFor(model => birthDate)
+            @Html.DisplayFor(model => model.BirthDate)
         </dd>
 
         <dt>
@@ -35,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => deathDate)
+            @Html.DisplayFor(model => model.DeathDate)
         </dd>
 
         <dt>
