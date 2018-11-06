@@ -17,6 +17,7 @@ namespace WorldwideMovieDatabase.Models
 
         // 1995 - Release Year
         [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         // 8.4 - 861,254 users
