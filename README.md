@@ -1,7 +1,11 @@
 # Worldwide Movie Database
 #### *A website hosting an online database storing information about movies and the movie industry.*
 
+#
+
 ![Demonstration](https://github.com/nelsonnyland/WorldwideMovieDatabase/blob/master/WMDb.JPG?raw=true)
+
+
 
 #### FEATURES:
 
