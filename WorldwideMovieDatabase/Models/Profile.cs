@@ -24,7 +24,7 @@ namespace WorldwideMovieDatabase.Models
 
         // month/day/year of death, null if still alive
         [Display(Name = "Date of Death")]
-        public DateTime DeathDate { get; set; }
+        public DateTime? DeathDate { get; set; }
 
         // Actor, Producer, Director
         public List<string> Titles { get; set; }

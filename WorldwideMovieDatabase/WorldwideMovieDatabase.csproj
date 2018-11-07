@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201811060218065_AddMoviePoster.Designer.cs">
       <DependentUpon>201811060218065_AddMoviePoster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811071910356_NullableDeathDate.cs" />
+    <Compile Include="Migrations\201811071910356_NullableDeathDate.Designer.cs">
+      <DependentUpon>201811071910356_NullableDeathDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -234,6 +238,7 @@
     <Content Include="Images\Fight Club.jpg" />
     <Content Include="Images\Forrest Gump.jpg" />
     <Content Include="Images\Inception.jpg" />
+    <Content Include="Images\MelGibson.jpg" />
     <Content Include="Images\One Flew Over the Cuckoo%27s Nest.jpg" />
     <Content Include="Images\Pulp Fiction.jpg" />
     <Content Include="Images\Schindler%27s List.jpg" />
@@ -296,7 +301,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Profiles\Create.cshtml" />
     <Content Include="Views\Profiles\Delete.cshtml" />
-    <Content Include="Views\Profiles\Profile.cshtml" />
+    <Content Include="Views\Profiles\Profiles.cshtml" />
     <Content Include="Views\Profiles\Edit.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
   </ItemGroup>
@@ -320,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811060218065_AddMoviePoster.resx">
       <DependentUpon>201811060218065_AddMoviePoster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811071910356_NullableDeathDate.resx">
+      <DependentUpon>201811071910356_NullableDeathDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

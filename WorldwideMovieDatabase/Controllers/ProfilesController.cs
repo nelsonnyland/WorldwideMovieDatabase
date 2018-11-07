@@ -21,7 +21,7 @@ namespace WorldwideMovieDatabase.Controllers
         }
 
         // GET: Profiles/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Profiles(int? id)
         {
             if (id == null)
             {
@@ -46,7 +46,9 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture")] Profile profile)
+        public ActionResult Create([Bind(Include = 
+            "ID,Name,BirthDate,DeathDate,Movies,Titles,Bio," +
+            "ProfilePicture")] Profile profile)
         {
             if (ModelState.IsValid)
             {
