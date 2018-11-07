@@ -1,0 +1,57 @@
+﻿@model WorldwideMovieDatabase.Models.Profile
+
+@{
+    ViewBag.Title = Model.Name;
+}
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <img src="@Url.Content(Model.ProfilePicture)" />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeathDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeathDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -17,6 +17,7 @@ namespace WorldwideMovieDatabase.Models
 
         // 1995 - Release Year
         [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         // 8.4 - 861,254 users
@@ -39,5 +40,9 @@ namespace WorldwideMovieDatabase.Models
 
         // Mel Gibson, Sophie Marceau...
         public List<Profile> Actors { get; set; }
+
+        // "~/Images/..." - path for image
+        [Display(Name = "Movie Poster URL")]
+        public string MoviePoster { get; set; }
     }
 }
