@@ -82,7 +82,7 @@ namespace WorldwideMovieDatabase.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = 
-            "ID,Title,ReleaseYear,UserRating,MPAARating,MovieLength,Genre,Description")] Movie movie)
+            "ID,Title,ReleaseDate,UserRating,MPAARating,MovieLength,Genre,Description")] Movie movie)
         {
             if (ModelState.IsValid)
             {
