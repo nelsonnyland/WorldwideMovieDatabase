@@ -26,10 +26,6 @@ function addToDoItem(itemTitle) {
         }
     };
 }
-function clearTextboxes() {
-    document.getElementById("title").value = "";
-    document.getElementById("title").focus();
-}
 function displayItems() {
     for (var i = 0; i < allItems.length; i++) {
         var currItem = allItems[i];
@@ -42,3 +38,6 @@ var ToDoItem = (function () {
     }
     return ToDoItem;
 }());
+
+https://stackoverflow.com/questions/26227487/adding-textbox-on-button-click-with-javascript
+https://stackoverflow.com/questions/23125087/adding-textbox-dynamically-and-save-values-to-the-database-in-asp-net-mvc
