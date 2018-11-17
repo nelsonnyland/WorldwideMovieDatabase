@@ -3,7 +3,7 @@
 
 #
 
-![Demonstration](https://github.com/nelsonnyland/WorldwideMovieDatabase/blob/master/WMDb.JPG?raw=true)
+![Demonstration](Resources/Images/WMDb.JPG)
 
 
 
