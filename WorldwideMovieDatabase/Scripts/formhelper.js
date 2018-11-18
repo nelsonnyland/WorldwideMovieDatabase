@@ -1,47 +1,33 @@
-﻿
-var movies = [];
-var titles = [];
+﻿var movieCount = 0;
+var titleCount = 0;
 
+function addMovie() {
+    var container = document.getElementById("movie");    
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("name", "movieInput" + movieCount);
+    input.setAttribute("class", "form-control");
+    container.appendChild(input);
+    movieCount++;
 
+    console.log("movieCount: " + movieCount);
+}
 
-////
-function saveItem() {
-    var itemTitle = document.getElementById("title").value;
-    var newTask = new ToDoItem(itemTitle);
-    allItems.push(newTask);
-    addToDoItem(itemTitle);
-    clearTextboxes();
+function addTitle() {
+    var container = document.getElementById("title");
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("name", "titleInput" + titleCount);
+    input.setAttribute("class", "form-control");
+    container.appendChild(input);
+    titleCount++;
+
+    console.log("titleCount: " + titleCount);
 }
-function addToDoItem(itemTitle) {
-    var listItems = document.getElementById("listItems");
-    var newItem = document.createElement("li");
-    var textNode = document.createTextNode(itemTitle);
-    newItem.appendChild(textNode);
-    listItems.appendChild(newItem);
-    newItem.onclick = function () {
-        if (this.getAttribute("class") == null) {
-            this.setAttribute("class", "itemDone");
-        }
-        else {
-            this.removeAttribute("class");
-        }
-    };
-}
-function displayItems() {
-    for (var i = 0; i < allItems.length; i++) {
-        var currItem = allItems[i];
-        alert(currItem.title);
-    }
-}
-var ToDoItem = (function () {
-    function ToDoItem(title) {
-        this.title = title;
-    }
-    return ToDoItem;
-}());
-////
 
 window.onload = function () {
-    document.getElementById("addMovie").onclick = addItem;
-    document.getElementById("addTitle").onclick = addItem;
+    document.getElementById("addMovie").onclick =
+        addMovie;
+    document.getElementById("addTitle").onclick =
+        addTitle;
 };
