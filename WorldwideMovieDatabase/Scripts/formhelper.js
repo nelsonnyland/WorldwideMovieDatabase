@@ -17,7 +17,7 @@ function addTitle() {
     var container = document.getElementById("title");
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    input.setAttribute("name", "titleInput" + titleCount);
+    input.setAttribute("name", "Titles[" + titleCount + "].Title");
     input.setAttribute("class", "form-control");
     container.appendChild(input);
     titleCount++;
