@@ -5,7 +5,7 @@ function addMovie() {
     var container = document.getElementById("movie");    
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    input.setAttribute("name", "movieInput" + movieCount);
+    input.setAttribute("name", "Movies[" + movieCount + "].Title");
     input.setAttribute("class", "form-control");
     container.appendChild(input);
     movieCount++;
