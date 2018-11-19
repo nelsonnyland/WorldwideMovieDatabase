@@ -32,5 +32,6 @@ namespace WorldwideMovieDatabase.Models
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<JobTitle> JobTitles { get; set; }
     }
 }

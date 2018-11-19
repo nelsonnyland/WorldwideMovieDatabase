@@ -11,6 +11,7 @@ namespace WorldwideMovieDatabase.Models
         public Profile()
         {
             Movies = new HashSet<Movie>();
+            Titles = new HashSet<JobTitle>();
         }
 
         // internal identifier
@@ -34,7 +35,7 @@ namespace WorldwideMovieDatabase.Models
         public DateTime? DeathDate { get; set; }
 
         // Actor, Producer, Director
-        public List<string> Titles { get; set; }
+        public ICollection<JobTitle> Titles { get; set; }
 
         // "Mel Columcille Gerard Gibson..."
         public string Bio { get; set; }
