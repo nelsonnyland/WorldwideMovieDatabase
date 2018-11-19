@@ -16,7 +16,7 @@ namespace WorldwideMovieDatabase.Models
         public string Name { get; set; }
 
         // movies they worked in
-        public List<string> Movies { get; set; }
+        public List<Movie> Movies { get; set; }
 
         // month/day/year of birth
         [Display(Name = "Date of Birth")]
