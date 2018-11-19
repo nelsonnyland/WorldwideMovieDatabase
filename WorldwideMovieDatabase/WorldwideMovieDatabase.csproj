@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201811190706445_VirtualProfilesAndMovies.Designer.cs">
       <DependentUpon>201811190706445_VirtualProfilesAndMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.cs" />
+    <Compile Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.Designer.cs">
+      <DependentUpon>201811191757009_OptionalProfileAndMovieProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -319,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811190706445_VirtualProfilesAndMovies.resx">
       <DependentUpon>201811190706445_VirtualProfilesAndMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.resx">
+      <DependentUpon>201811191757009_OptionalProfileAndMovieProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
