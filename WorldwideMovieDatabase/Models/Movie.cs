@@ -8,6 +8,11 @@ namespace WorldwideMovieDatabase.Models
 {
     public class Movie
     {
+        public Movie()
+        {
+            Actors = new HashSet<Profile>();
+        }
+
         // internal identifier
         [Key]
         public int ID { get; set; }
@@ -39,7 +44,7 @@ namespace WorldwideMovieDatabase.Models
         public string Description { get; set; }
 
         // Mel Gibson, Sophie Marceau...
-        public List<Profile> Actors { get; set; }
+        public virtual ICollection<Profile> Actors { get; set; }
 
         // "~/Images/..." - path for image
         [Display(Name = "Movie Poster URL")]

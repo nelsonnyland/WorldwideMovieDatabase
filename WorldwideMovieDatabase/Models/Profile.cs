@@ -8,6 +8,11 @@ namespace WorldwideMovieDatabase.Models
 {
     public class Profile
     {
+        public Profile()
+        {
+            Movies = new HashSet<Movie>();
+        }
+
         // internal identifier
         [Key]
         public int ID { get; set; }
@@ -16,7 +21,7 @@ namespace WorldwideMovieDatabase.Models
         public string Name { get; set; }
 
         // movies they worked in
-        public List<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
 
         // month/day/year of birth
         [Display(Name = "Date of Birth")]
