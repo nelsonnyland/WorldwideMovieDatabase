@@ -8,6 +8,7 @@ function addMovie() {
     input.setAttribute("name", "Movies[" + movieCount + "].Title");
     input.setAttribute("class", "form-control");
     container.appendChild(input);
+    container.appendChild(document.createElement("BR"));
     movieCount++;
 
     console.log("movieCount: " + movieCount);
@@ -20,6 +21,7 @@ function addTitle() {
     input.setAttribute("name", "Titles[" + titleCount + "].Title");
     input.setAttribute("class", "form-control");
     container.appendChild(input);
+    container.appendChild(document.createElement("BR"));
     titleCount++;
 
     console.log("titleCount: " + titleCount);
