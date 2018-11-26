@@ -3,10 +3,54 @@ namespace WorldwideMovieDatabase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DbSet : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.MovieProfiles",
+                c => new
+                    {
+                        MovieProfileId = c.Int(nullable: false, identity: true),
+                        MovieId = c.Int(nullable: false),
+                        ProfileId = c.Int(nullable: false),
+                        JobTitle = c.String(),
+                    })
+                .PrimaryKey(t => t.MovieProfileId)
+                .ForeignKey("dbo.Movies", t => t.MovieId, cascadeDelete: true)
+                .ForeignKey("dbo.Profiles", t => t.ProfileId, cascadeDelete: true)
+                .Index(t => t.MovieId)
+                .Index(t => t.ProfileId);
+            
+            CreateTable(
+                "dbo.Movies",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Title = c.String(),
+                        ReleaseDate = c.DateTime(),
+                        UserRating = c.Double(),
+                        MPAARating = c.String(),
+                        MovieLength = c.Time(precision: 7),
+                        Genre = c.String(),
+                        Description = c.String(),
+                        MoviePoster = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Profiles",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        BirthDate = c.DateTime(),
+                        DeathDate = c.DateTime(),
+                        Bio = c.String(),
+                        ProfilePicture = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -83,17 +127,24 @@ namespace WorldwideMovieDatabase.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.MovieProfiles", "ProfileId", "dbo.Profiles");
+            DropForeignKey("dbo.MovieProfiles", "MovieId", "dbo.Movies");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.MovieProfiles", new[] { "ProfileId" });
+            DropIndex("dbo.MovieProfiles", new[] { "MovieId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Profiles");
+            DropTable("dbo.Movies");
+            DropTable("dbo.MovieProfiles");
         }
     }
 }
