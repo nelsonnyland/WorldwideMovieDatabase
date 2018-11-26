@@ -46,18 +46,17 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = 
-            "ID,Name,BirthDate,DeathDate,Movies,Titles,Bio," +
-            "ProfilePicture")] Profile profile)
+        //public ActionResult Create([Bind(Include = 
+        //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
+        //    "ProfilePicture")] Profile profile)
+        public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieViewModel profileMovieVM)
         {
             if (ModelState.IsValid)
             {
-                db.Profiles.Add(profile);
-                db.SaveChanges();
+                AddProfileWithMovies(profileMovieVM);
                 return RedirectToAction("Index");
             }
-
-            return View(profile);
+            return View(profileMovieVM);
         }
 
         // GET: Profiles/Edit/5
@@ -124,6 +123,45 @@ namespace WorldwideMovieDatabase.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        /// <summary>
+        /// Processes data from the ProfileMovieViewModel and makes calls to add it to the database.
+        /// An inputted profile with a collection of movies they worked in and job titles for each
+        /// movie is entered.
+        /// </summary>
+        /// <param name="profileMovieViewModel"></param>
+        public void AddProfileWithMovies(ProfileMovieViewModel profileMovieViewModel)
+        {
+            // Add Profile
+            Profile currProfile = profileMovieViewModel.Profile;
+            ProfileDb.AddProfile(currProfile);
+
+            //Add Movies
+            var movies = new List<Movie>();
+            foreach (var movieJob in profileMovieViewModel.MovieJobs)
+            {
+                movies.Add(movieJob.Movie);
+            }
+            MovieDb.AddMovies(movies);
+
+            // Add MovieProfiles
+            var movieProfiles = new List<MovieProfile>();
+            foreach (var movieJob in profileMovieViewModel.MovieJobs)
+            {
+                // Add all job titles for each movie
+                foreach (var jobTitle in movieJob.JobTitles)
+                {
+                    MovieProfile currMovieProfile = new MovieProfile
+                    {
+                        ProfileId = currProfile.ID,
+                        MovieId = movieJob.Movie.ID,
+                        JobTitle = jobTitle
+                    };
+                    movieProfiles.Add(currMovieProfile);
+                }
+            }
+            MovieProfileDb.AddMovieProfiles(movieProfiles);
         }
     }
 }
