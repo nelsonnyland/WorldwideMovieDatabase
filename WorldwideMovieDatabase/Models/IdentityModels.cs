@@ -30,8 +30,24 @@ namespace WorldwideMovieDatabase.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<JobTitle> JobTitles { get; set; }
+        public virtual DbSet<Profile> Profiles { get; set; }
+        public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<MovieProfile> MovieProfiles { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    //modelBuilder.Entity<MovieProfile>().HasKey(mp => new { mp.MovieId, mp.ProfileId });
+        //    //modelBuilder.Ignore<ProfileMovie>();
+        //    modelBuilder.Entity<MovieProfile>()
+        //                .HasRequired(mp => mp.Movie)
+        //                .WithMany(p => p.Actors)
+        //                .HasForeignKey(mp => mp.MovieId);
+
+        //    modelBuilder.Entity<MovieProfile>()
+        //                .HasRequired(mp => mp.Profile)
+        //                .WithMany(m => m.Movies)
+        //                .HasForeignKey(mp => mp.ProfileId);
+        //}
     }
 }
