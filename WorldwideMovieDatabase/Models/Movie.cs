@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +11,7 @@ namespace WorldwideMovieDatabase.Models
     {
         public Movie()
         {
-            Actors = new HashSet<Profile>();
+            Actors = new HashSet<MovieProfile>();
         }
 
         // internal identifier
@@ -44,7 +45,7 @@ namespace WorldwideMovieDatabase.Models
         public string Description { get; set; }
 
         // Mel Gibson, Sophie Marceau...
-        public virtual ICollection<Profile> Actors { get; set; }
+        public virtual ICollection<MovieProfile> Actors { get; set; }
 
         // "~/Images/..." - path for image
         [Display(Name = "Movie Poster URL")]
