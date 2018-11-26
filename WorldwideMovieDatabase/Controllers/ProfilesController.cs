@@ -27,12 +27,30 @@ namespace WorldwideMovieDatabase.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.FindProfile(id);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+
+            List<Movie> movies = MovieDb.GetProfileMovies(id) as List<Movie>;
+
+            List<MovieJobViewModel> movieJobs = new List<MovieJobViewModel>();
+
+            foreach (Movie currMovie in movies)
+            {
+                movieJobs.Add(new MovieJobViewModel()
+                {
+                    Movie = currMovie
+                });
+            }
+
+            ProfileMovieJobsViewModel profileMovieJobsVM = new ProfileMovieJobsViewModel()
+            {
+                Profile = profile,
+                MovieJobs = movieJobs
+            };
+            return View(profileMovieJobsVM);
         }
 
         // GET: Profiles/Create
@@ -49,7 +67,7 @@ namespace WorldwideMovieDatabase.Controllers
         //public ActionResult Create([Bind(Include = 
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
-        public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieViewModel profileMovieVM)
+        public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
         {
             if (ModelState.IsValid)
             {
@@ -131,7 +149,7 @@ namespace WorldwideMovieDatabase.Controllers
         /// movie is entered.
         /// </summary>
         /// <param name="profileMovieViewModel"></param>
-        public void AddProfileWithMovies(ProfileMovieViewModel profileMovieViewModel)
+        public void AddProfileWithMovies(ProfileMovieJobsViewModel profileMovieViewModel)
         {
             // Add Profile
             Profile currProfile = profileMovieViewModel.Profile;
