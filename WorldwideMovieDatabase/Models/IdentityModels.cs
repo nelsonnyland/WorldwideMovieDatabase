@@ -34,20 +34,5 @@ namespace WorldwideMovieDatabase.Models
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<MovieProfile> MovieProfiles { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    //modelBuilder.Entity<MovieProfile>().HasKey(mp => new { mp.MovieId, mp.ProfileId });
-        //    //modelBuilder.Ignore<ProfileMovie>();
-        //    modelBuilder.Entity<MovieProfile>()
-        //                .HasRequired(mp => mp.Movie)
-        //                .WithMany(p => p.Actors)
-        //                .HasForeignKey(mp => mp.MovieId);
-
-        //    modelBuilder.Entity<MovieProfile>()
-        //                .HasRequired(mp => mp.Profile)
-        //                .WithMany(m => m.Movies)
-        //                .HasForeignKey(mp => mp.ProfileId);
-        //}
     }
 }
