@@ -13,5 +13,10 @@ namespace WorldwideMovieDatabase.Models
             db.Profiles.Add(currProfile);
             db.SaveChanges();
         }
+
+        public static Profile FindProfile(int? id)
+        {
+            return new ApplicationDbContext().Profiles.Find(id);
+        }
     }
 }
