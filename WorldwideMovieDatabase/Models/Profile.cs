@@ -10,8 +10,7 @@ namespace WorldwideMovieDatabase.Models
     {
         public Profile()
         {
-            Movies = new HashSet<Movie>();
-            Titles = new HashSet<JobTitle>();
+            Movies = new HashSet<MovieProfile>();
         }
 
         // internal identifier
@@ -22,7 +21,7 @@ namespace WorldwideMovieDatabase.Models
         public string Name { get; set; }
 
         // movies they worked in
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<MovieProfile> Movies { get; set; }
 
         // month/day/year of birth
         [Display(Name = "Date of Birth")]
@@ -34,14 +33,35 @@ namespace WorldwideMovieDatabase.Models
         [DataType(DataType.Date)]
         public DateTime? DeathDate { get; set; }
 
-        // Actor, Producer, Director
-        public ICollection<JobTitle> Titles { get; set; }
-
         // "Mel Columcille Gerard Gibson..."
         public string Bio { get; set; }
 
         // "~/Images/..." - path for image
         [Display(Name = "Profile Picture URL")]
         public string ProfilePicture { get; set; }
+    }
+
+    public class ProfileMovieViewModel
+    {
+        public ProfileMovieViewModel()
+        {
+            MovieJobs = new HashSet<MovieJobViewModel>();
+        }
+
+        public Profile Profile { get; set; }
+
+        public ICollection<MovieJobViewModel> MovieJobs { get; set; }
+    }
+
+    public class MovieJobViewModel
+    {
+        public MovieJobViewModel()
+        {
+            JobTitles = new HashSet<string>();
+        }
+
+        public Movie Movie { get; set; }
+
+        public ICollection<string> JobTitles { get; set; }
     }
 }
