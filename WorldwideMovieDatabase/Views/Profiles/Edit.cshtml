@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h1>Edit</h1>
 
 
 @using (Html.BeginForm())
@@ -47,7 +47,7 @@
             @foreach (var movie in Model.Movies)
             {
                 <div class="col-md-10">
-                    @Html.EditorFor(model => movie.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.EditorFor(model => movie.Title, new { htmlAttributes = new { @class = "form-control" } })*@
                     @Html.ValidationMessageFor(model => movie, "", new { @class = "text-danger" })
                 </div>
                 <br />
@@ -63,13 +63,13 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Titles, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.Titles, htmlAttributes: new { @class = "control-label col-md-2" })*@
 
-            @foreach (var title in Model.Titles)
+            @*@foreach (var title in Model.Titles)*@
             {
                 <div class="col-md-10">
-                    @Html.EditorFor(model => title.Title, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => Model.Titles, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => title.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => Model.Titles, "", new { @class = "text-danger" })*@
                 </div>
                 <br />
             }

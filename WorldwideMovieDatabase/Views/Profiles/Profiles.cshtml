@@ -1,57 +1,57 @@
-﻿@model WorldwideMovieDatabase.Models.Profile
+﻿@model WorldwideMovieDatabase.Models.ProfileMovieJobsViewModel
 
 @{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.Profile.Name;
 }
 <div>
-    <h4>@Model.Name</h4>
+    <h1>@Model.Profile.Name</h1>
     <hr />
-    <img src="@Url.Content(Model.ProfilePicture)" />
+    <img src="@Url.Content(Model.Profile.ProfilePicture)" />
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
+            @Html.DisplayNameFor(model => model.Profile.BirthDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BirthDate)
+            @Html.DisplayFor(model => model.Profile.BirthDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DeathDate)
+            @Html.DisplayNameFor(model => model.Profile.DeathDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DeathDate)
+            @Html.DisplayFor(model => model.Profile.DeathDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Movies)
+            @Html.DisplayNameFor(model => model.Profile.Movies)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Movies)
+            @Html.DisplayFor(model => model.Profile.Movies)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Titles)
+            @Html.DisplayNameFor(model => model.Profile.Movies)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Titles)
+            @*@Html.DisplayFor(model => model.)*@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Bio)
+            @Html.DisplayNameFor(model => model.Profile.Bio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Bio)
+            @Html.DisplayFor(model => model.Profile.Bio)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Profile.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

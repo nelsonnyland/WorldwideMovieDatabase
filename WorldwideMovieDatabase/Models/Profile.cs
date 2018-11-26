@@ -41,9 +41,9 @@ namespace WorldwideMovieDatabase.Models
         public string ProfilePicture { get; set; }
     }
 
-    public class ProfileMovieViewModel
+    public class ProfileMovieJobsViewModel
     {
-        public ProfileMovieViewModel()
+        public ProfileMovieJobsViewModel()
         {
             MovieJobs = new HashSet<MovieJobViewModel>();
         }

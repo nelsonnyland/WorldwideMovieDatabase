@@ -196,45 +196,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810151953189_DbSet.cs" />
-    <Compile Include="Migrations\201810151953189_DbSet.Designer.cs">
-      <DependentUpon>201810151953189_DbSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810240625068_ProfileAndMovie.cs" />
-    <Compile Include="Migrations\201810240625068_ProfileAndMovie.Designer.cs">
-      <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810250459484_ProfileMovieNames.cs" />
-    <Compile Include="Migrations\201810250459484_ProfileMovieNames.Designer.cs">
-      <DependentUpon>201810250459484_ProfileMovieNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811060218065_AddMoviePoster.cs" />
-    <Compile Include="Migrations\201811060218065_AddMoviePoster.Designer.cs">
-      <DependentUpon>201811060218065_AddMoviePoster.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811071910356_NullableDeathDate.cs" />
-    <Compile Include="Migrations\201811071910356_NullableDeathDate.Designer.cs">
-      <DependentUpon>201811071910356_NullableDeathDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811190706445_VirtualProfilesAndMovies.cs" />
-    <Compile Include="Migrations\201811190706445_VirtualProfilesAndMovies.Designer.cs">
-      <DependentUpon>201811190706445_VirtualProfilesAndMovies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.cs" />
-    <Compile Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.Designer.cs">
-      <DependentUpon>201811191757009_OptionalProfileAndMovieProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191856130_AddJobTitleTable.cs" />
-    <Compile Include="Migrations\201811191856130_AddJobTitleTable.Designer.cs">
-      <DependentUpon>201811191856130_AddJobTitleTable.cs</DependentUpon>
+    <Compile Include="Migrations\201811260539294_Initial.cs" />
+    <Compile Include="Migrations\201811260539294_Initial.Designer.cs">
+      <DependentUpon>201811260539294_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\JobTitle.cs" />
+    <Compile Include="Models\MovieDb.cs" />
+    <Compile Include="Models\MovieProfile.cs" />
+    <Compile Include="Models\MovieProfileDb.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\ProfileDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -311,29 +286,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810151953189_DbSet.resx">
-      <DependentUpon>201810151953189_DbSet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810240625068_ProfileAndMovie.resx">
-      <DependentUpon>201810240625068_ProfileAndMovie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810250459484_ProfileMovieNames.resx">
-      <DependentUpon>201810250459484_ProfileMovieNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811060218065_AddMoviePoster.resx">
-      <DependentUpon>201811060218065_AddMoviePoster.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811071910356_NullableDeathDate.resx">
-      <DependentUpon>201811071910356_NullableDeathDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811190706445_VirtualProfilesAndMovies.resx">
-      <DependentUpon>201811190706445_VirtualProfilesAndMovies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191757009_OptionalProfileAndMovieProperties.resx">
-      <DependentUpon>201811191757009_OptionalProfileAndMovieProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191856130_AddJobTitleTable.resx">
-      <DependentUpon>201811191856130_AddJobTitleTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811260539294_Initial.resx">
+      <DependentUpon>201811260539294_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
