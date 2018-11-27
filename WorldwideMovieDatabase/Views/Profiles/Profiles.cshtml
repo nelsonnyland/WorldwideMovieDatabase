@@ -29,17 +29,12 @@
             @Html.DisplayNameFor(model => model.Profile.Movies)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Profile.Movies)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Profile.Movies)
-        </dt>
-
-        <dd>
-            @*@Html.DisplayFor(model => model.)*@
-        </dd>
+        @foreach (var movieJob in Model.MovieJobs)
+        {
+            <dd>
+                @Html.DisplayFor(model => movieJob.Movie.Title)
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.Profile.Bio)
@@ -49,7 +44,7 @@
             @Html.DisplayFor(model => model.Profile.Bio)
         </dd>
 
-    </dl>
+        </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Profile.ID }) |

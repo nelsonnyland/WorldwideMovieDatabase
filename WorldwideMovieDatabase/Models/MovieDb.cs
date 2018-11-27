@@ -15,24 +15,29 @@ namespace WorldwideMovieDatabase.Models
         }
 
 
-        public static ICollection<Movie> GetProfileMovies(int? id)
+        public static List<Movie> GetProfileMovies(int? id)
         {
 
             //https://stackoverflow.com/questions/2767709/join-where-with-linq-and-lambda
             //https://stackoverflow.com/questions/9720225/how-to-perform-join-between-multiple-tables-in-linq-lambda
             var db = new ApplicationDbContext();
-            return db
-                .Profiles
-                .Join(db.MovieProfiles,
-                    p => p.ID,
-                    mp => mp.ProfileId,
-                    (p, mp) => new { p.ID, mp.MovieId })
-                .Join(db.Movies,
-                    mp => mp.MovieId,
-                    m => m.ID,
-                    (mp, m) => new { mp, m.Title })
-                .Where(p => p.ID == id)
-                .ToList();
+            var query = db.Profiles
+                            .Where(p => p.ID == id)
+                            .Join(db.MovieProfiles,
+                                p => p.ID,
+                                mp => mp.ProfileId,
+                                (p, mp) => new { p, mp })
+                            .Join(db.Movies,
+                                pmp => pmp.mp.MovieId,
+                                m => m.ID,
+                                (pmp, m) => new { m.Title });
+
+            List<Movie> movieList = new List<Movie>();
+            foreach (var item in query)
+            {
+                movieList.Add(new Movie { Title = item.Title });
+            }
+            return movieList;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace WorldwideMovieDatabase.Controllers
                 return HttpNotFound();
             }
 
-            List<Movie> movies = MovieDb.GetProfileMovies(id) as List<Movie>;
+            List<Movie> movies = MovieDb.GetProfileMovies(id);
 
             List<MovieJobViewModel> movieJobs = new List<MovieJobViewModel>();
 
