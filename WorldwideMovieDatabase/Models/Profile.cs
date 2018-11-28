@@ -10,7 +10,7 @@ namespace WorldwideMovieDatabase.Models
     {
         public Profile()
         {
-            Movies = new HashSet<MovieProfile>();
+            Movies = new List<MovieProfile>();
         }
 
         // internal identifier
@@ -21,7 +21,7 @@ namespace WorldwideMovieDatabase.Models
         public string Name { get; set; }
 
         // movies they worked in
-        public virtual ICollection<MovieProfile> Movies { get; set; }
+        public virtual IList<MovieProfile> Movies { get; set; }
 
         // month/day/year of birth
         [Display(Name = "Date of Birth")]
@@ -45,23 +45,23 @@ namespace WorldwideMovieDatabase.Models
     {
         public ProfileMovieJobsViewModel()
         {
-            MovieJobs = new HashSet<MovieJobViewModel>();
+            MovieJobs = new List<MovieJobViewModel>();
         }
 
         public Profile Profile { get; set; }
 
-        public ICollection<MovieJobViewModel> MovieJobs { get; set; }
+        public IList<MovieJobViewModel> MovieJobs { get; set; }
     }
 
     public class MovieJobViewModel
     {
         public MovieJobViewModel()
         {
-            JobTitles = new HashSet<string>();
+            JobTitles = new List<string>();
         }
 
         public Movie Movie { get; set; }
 
-        public ICollection<string> JobTitles { get; set; }
+        public IList<string> JobTitles { get; set; }
     }
 }

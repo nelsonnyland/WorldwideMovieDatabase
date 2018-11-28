@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201811260539294_Initial.Designer.cs">
       <DependentUpon>201811260539294_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811281746593_IListAsModelDataTypes.cs" />
+    <Compile Include="Migrations\201811281746593_IListAsModelDataTypes.Designer.cs">
+      <DependentUpon>201811281746593_IListAsModelDataTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MovieDb.cs" />
@@ -288,6 +292,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811260539294_Initial.resx">
       <DependentUpon>201811260539294_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281746593_IListAsModelDataTypes.resx">
+      <DependentUpon>201811281746593_IListAsModelDataTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
