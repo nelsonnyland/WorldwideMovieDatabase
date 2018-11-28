@@ -1,52 +1,62 @@
-﻿@model WorldwideMovieDatabase.Models.ProfileMovieJobsViewModel
+﻿@model WorldwideMovieDatabase.Models.Profile
 
 @{
-    ViewBag.Title = Model.Profile.Name;
+    ViewBag.Title = Model.Name;
 }
 <div>
-    <h1>@Model.Profile.Name</h1>
+    <h1>@Model.Name</h1>
     <hr />
-    <img src="@Url.Content(Model.Profile.ProfilePicture)" />
+    <img src="@Url.Content(Model.ProfilePicture)" />
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Profile.BirthDate)
+            @Html.DisplayNameFor(model => model.BirthDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Profile.BirthDate)
+            @Html.DisplayFor(model => model.BirthDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Profile.DeathDate)
+            @Html.DisplayNameFor(model => model.DeathDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Profile.DeathDate)
+            @Html.DisplayFor(model => model.DeathDate)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Profile.Movies)
-        </dt>
-
-        @foreach (var movieJob in Model.MovieJobs)
+        @foreach (var jobTitle in Model.Movies.OrderBy(m => m.JobTitle)
+                                    .GroupBy(m => m.JobTitle)
+                                    .Select(m => m.First())
+                                    .Select(m => m.JobTitle))
         {
-            <dd>
-                @Html.DisplayFor(model => movieJob.Movie.Title)
-            </dd>
+            <dt>
+                @jobTitle
+            </dt>
+
+            foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == jobTitle))
+            {
+
+                if (movieJob.JobTitle == jobTitle)
+                {
+                    <dd>
+                        @Html.DisplayFor(model => movieJob.Movie.Title)
+                    </dd>
+                }
+            }
         }
 
         <dt>
-            @Html.DisplayNameFor(model => model.Profile.Bio)
+            @Html.DisplayNameFor(model => model.Bio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Profile.Bio)
+            @Html.DisplayFor(model => model.Bio)
         </dd>
 
-        </dl>
+    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Profile.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
