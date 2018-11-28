@@ -27,30 +27,12 @@ namespace WorldwideMovieDatabase.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = ProfileDb.FindProfile(id);
+            Profile profile = ProfileDb.GetAllProfileMovieJobs(id);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-
-            List<Movie> movies = MovieDb.GetProfileMovies(id);
-
-            List<MovieJobViewModel> movieJobs = new List<MovieJobViewModel>();
-
-            foreach (Movie currMovie in movies)
-            {
-                movieJobs.Add(new MovieJobViewModel()
-                {
-                    Movie = currMovie
-                });
-            }
-
-            ProfileMovieJobsViewModel profileMovieJobsVM = new ProfileMovieJobsViewModel()
-            {
-                Profile = profile,
-                MovieJobs = movieJobs
-            };
-            return View(profileMovieJobsVM);
+            return View(profile);
         }
 
         // GET: Profiles/Create
