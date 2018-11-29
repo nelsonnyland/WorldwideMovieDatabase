@@ -33,17 +33,20 @@
             <dt>
                 @jobTitle
             </dt>
+            <dd>
+                <ul>
+                    @foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == jobTitle))
+                    {
 
-            foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == jobTitle))
-            {
+                        if (movieJob.JobTitle == jobTitle)
+                        {
 
-                if (movieJob.JobTitle == jobTitle)
-                {
-                    <dd>
-                        @Html.DisplayFor(model => movieJob.Movie.Title)
-                    </dd>
-                }
-            }
+                            <li>@Html.DisplayFor(model => movieJob.Movie.Title)</li>
+
+                        }
+                    }
+                </ul>
+            </dd>
         }
 
         <dt>
