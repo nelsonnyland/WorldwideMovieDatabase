@@ -40,29 +40,26 @@
 
     <h2>Movies</h2>
     <hr />
-    @foreach (var jobTitle in Model.Movies.OrderBy(m => m.JobTitle)
+    @foreach (var movie in Model.Movies.OrderBy(m => m.JobTitle)
                             .GroupBy(m => m.JobTitle)
-                            .Select(m => m.First())
-                            .Select(m => m.JobTitle))
+                            .Select(m => m.First()))
+                            
     {
         <div class="form-group">
             <label class="control-label col-md-2" for="jobTitle">Job Title</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => jobTitle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => jobTitle, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => movie.MovieProfileId, new { htmlAttributes = new { type = "hidden"} })
+                @Html.EditorFor(model => movie.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => movie.JobTitle, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2" for="Movies">Movie Titles</label>
             <div class="col-md-10">
                 <ul>
-                @foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == jobTitle))
+                @foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == movie.JobTitle))
                 {
-
-                    if (movieJob.JobTitle == jobTitle)
-                    {
                         <li>@Html.DisplayFor(model => movieJob.Movie.Title)</li>
-                    }
                 }
                 </ul>
             </div>
