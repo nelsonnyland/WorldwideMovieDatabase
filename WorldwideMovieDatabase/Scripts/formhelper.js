@@ -113,9 +113,5 @@ function addTitleToGivenParent(movieNum, parent) {
 
 window.onload = function () {
     addMovie();
-    document.getElementById("addMovie").onclick =
-        addMovie;
-    document.getElementById("addTitle").onclick = function() {
-        addTitle(this.dataset.movieNum);
-    };
+    document.getElementById("addMovie").onclick = addMovie;
 };

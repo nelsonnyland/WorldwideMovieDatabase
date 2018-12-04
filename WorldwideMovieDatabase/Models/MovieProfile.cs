@@ -9,20 +9,22 @@ namespace WorldwideMovieDatabase.Models
 {
     public class MovieProfile
     {
+        public MovieProfile()
+        {
+            Jobs = new List<Job>();
+        }
+
         [Key]
         public int MovieProfileId { get; set; }
-        //[Key]
-        //[Column(Order = 0)]
+
         public int MovieId { get; set; }
 
-        //[Key]
-        //[Column(Order = 1)]
         public int ProfileId { get; set; }
 
         public virtual Movie Movie { get; set; }
 
         public virtual Profile Profile { get; set; }
 
-        public string JobTitle { get; set; }
+        public virtual IList<Job> Jobs { get; set; }
     }
 }

@@ -50,7 +50,7 @@ namespace WorldwideMovieDatabase.Controllers
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
         //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
-        public ActionResult Create([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies")] Profile profile)
+        public ActionResult Create([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies,Movies.Jobs")] Profile profile)
         {
             if (ModelState.IsValid)
             {
@@ -171,8 +171,7 @@ namespace WorldwideMovieDatabase.Controllers
                     MovieProfile currMovieProfile = new MovieProfile
                     {
                         ProfileId = currProfile.ID,
-                        MovieId = movieJob.Movie.ID,
-                        JobTitle = jobTitle
+                        MovieId = movieJob.Movie.ID
                     };
                     movieProfiles.Add(currMovieProfile);
                 }

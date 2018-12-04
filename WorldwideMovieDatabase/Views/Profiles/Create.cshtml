@@ -35,12 +35,14 @@
             @Html.ValidationMessageFor(model => model.DeathDate, "", new { @class = "text-danger" })
         </div>
     </div>
-    <input value="0" id="Movies[0].MovieProfileId" name="Movies[0].MovieProfileId" type="hidden" readonly>
-    <input value="0" id="Movies[0].ProfileId" name="Movies[0].ProfileId" type="hidden" readonly>
-    <input value="0" id="Movies[0].MovieId" name="Movies[0].MovieId" type="hidden" readonly>
+
     @*under construction*@
     <h2>Add Movies</h2>
     <hr />
+
+    <input value="0" id="Movies[0].MovieProfileId" name="Movies[0].MovieProfileId" type="hidden" readonly>
+    <input value="0" id="Movies[0].Movie.ID" name="Movies[0].Movie.ID" type="hidden" readonly>
+    <input value="0" id="Movies[0].Jobs[0].Id" name="Movies[0].Jobs[0].Id" type="hidden" readonly>
 
     <div id="movies">
     </div>
