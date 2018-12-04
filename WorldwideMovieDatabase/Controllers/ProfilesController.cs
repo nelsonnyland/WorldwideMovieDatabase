@@ -79,11 +79,15 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture")] Profile profile)
+        public ActionResult Edit([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies")] Profile profile)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(profile).State = EntityState.Modified;
+                foreach(var movie in profile.Movies)
+                {
+                    db.Entry(movie).State = EntityState.Modified;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
