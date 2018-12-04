@@ -51,7 +51,6 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Movies[@i].JobTitle">Job Title</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => movie.MovieProfileId, new { htmlAttributes = new { type = "hidden", @class = "form-control" } })
                 <input value="@movie.MovieProfileId" id="Movies[@i].MovieProfileId" name="Movies[@i].MovieProfileId" type="hidden" readonly>
                 <input value="@movie.ProfileId" id="Movies[@i].ProfileId" name="Movies[@i].ProfileId" type="hidden" readonly>
                 <input value="@movie.MovieId" id="Movies[@i].MovieId" name="Movies[@i].MovieId" type="hidden" readonly>

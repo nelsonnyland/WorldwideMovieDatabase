@@ -62,7 +62,7 @@ function createMovieTitleFormGroup() {
 
 function createMovieTitleInputDiv() {
     var div = createInputDiv();
-    div.appendChild(createInput("MovieJobs[" + movieCount + "].Movie.Title"));
+    div.appendChild(createInput("Movies[" + movieCount + "].Movie.Title"));
     return div;
 }
 
@@ -95,7 +95,7 @@ function createInput(name) {
 }
 
 function createJobTitleInput(movieNum) {
-    return createInput("MovieJobs[" + movieNum + "].JobTitles[" + titleCount[movieNum] + "]");
+    return createInput("Movies[" + movieNum + "].JobTitle");
 }
 
 function addTitle(movieNum) {

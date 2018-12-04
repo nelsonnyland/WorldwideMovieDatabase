@@ -49,14 +49,24 @@ namespace WorldwideMovieDatabase.Controllers
         //public ActionResult Create([Bind(Include = 
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
-        public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
+        //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
+        public ActionResult Create([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies")] Profile profile)
         {
             if (ModelState.IsValid)
             {
-                AddProfileWithMovies(profileMovieVM);
+                //AddProfileWithMovies(profileMovieVM);
+                db.Profiles.Add(profile);
+                foreach (var movie in profile.Movies)
+                {
+                    db.Movies.Add(movie.Movie);
+                    movie.ProfileId = profile.ID;
+                    movie.MovieId = movie.Movie.ID;
+                    db.MovieProfiles.Add(movie);
+                }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(profileMovieVM);
+            return View(profile);
         }
 
         // GET: Profiles/Edit/5
@@ -84,10 +94,12 @@ namespace WorldwideMovieDatabase.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(profile).State = EntityState.Modified;
-                foreach(var movie in profile.Movies)
+
+                foreach (var movie in profile.Movies)
                 {
                     db.Entry(movie).State = EntityState.Modified;
                 }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
