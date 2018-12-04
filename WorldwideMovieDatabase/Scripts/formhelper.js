@@ -1,8 +1,8 @@
 ﻿var movieCount = 0;
-var titleCount = [];
+var jobTitleCount = [];
 
 function addMovie() {
-    titleCount.push(0);
+    jobTitleCount.push(0);
     var container = document.getElementById("movies");    
     container.appendChild(createMovieTitleFormGroup());
     container.appendChild(createJobTitlesFormGroup());
@@ -95,7 +95,7 @@ function createInput(name) {
 }
 
 function createJobTitleInput(movieNum) {
-    return createInput("Movies[" + movieNum + "].JobTitle");
+    return createInput("Movies[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Title");
 }
 
 function addTitle(movieNum) {
@@ -106,9 +106,9 @@ function addTitle(movieNum) {
 function addTitleToGivenParent(movieNum, parent) {
     parent.appendChild(createJobTitleInput(movieNum));
     parent.appendChild(document.createElement("br"));
-    titleCount[movieNum]++;
+    jobTitleCount[movieNum]++;
 
-    console.log("titleCount: " + titleCount[movieNum]);
+    console.log("titleCount: " + jobTitleCount[movieNum]);
 }
 
 window.onload = function () {
