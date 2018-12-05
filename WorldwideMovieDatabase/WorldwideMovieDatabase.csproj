@@ -234,21 +234,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Braveheart.jpg" />
-    <Content Include="Images\Fight Club.jpg" />
-    <Content Include="Images\Forrest Gump.jpg" />
-    <Content Include="Images\Inception.jpg" />
-    <Content Include="Images\MelGibson.jpg" />
-    <Content Include="Images\One Flew Over the Cuckoo%27s Nest.jpg" />
-    <Content Include="Images\Pulp Fiction.jpg" />
-    <Content Include="Images\Schindler%27s List.jpg" />
-    <Content Include="Images\The Academy Awards.jpg" />
-    <Content Include="Images\The Godfather.jpg" />
-    <Content Include="Images\The Good, the Bad and the Ugly.jpg" />
-    <Content Include="Images\The Oscars.jpg" />
-    <Content Include="Images\The Shawshank Redemption.jpg" />
-    <Content Include="Resources\WMD_Homepage.vsdx" />
-    <Content Include="Resources\WMD_Movies.vsdx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
