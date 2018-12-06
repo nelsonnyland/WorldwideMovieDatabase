@@ -16,6 +16,7 @@ namespace WorldwideMovieDatabase.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name="Job Title")]
         public string Title { get; set; }
 
         public virtual IList<MovieProfile> MovieProfiles { get; set; }

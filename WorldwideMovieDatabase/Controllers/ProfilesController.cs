@@ -93,12 +93,15 @@ namespace WorldwideMovieDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(profile).State = EntityState.Modified;
-
                 foreach (var movie in profile.Movies)
                 {
-                    db.Entry(movie).State = EntityState.Modified;
+                    db.Movies.Add(movie.Movie);
+                    movie.ProfileId = profile.ID;
+                    movie.MovieId = movie.Movie.ID;
+                    db.MovieProfiles.Add(movie);
                 }
+
+                db.Entry(profile).State = EntityState.Modified;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

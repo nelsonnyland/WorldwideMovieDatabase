@@ -25,39 +25,41 @@
             @Html.DisplayFor(model => model.DeathDate)
         </dd>
 
-        @foreach (var jobTitle in Model.Movies.OrderBy(m => m.JobTitle)
-                                    .GroupBy(m => m.JobTitle)
-                                    .Select(m => m.First())
-                                    .Select(m => m.JobTitle))
+        @foreach (var job in Model.Movies.SelectMany(m => m.Jobs)
+                                    .GroupBy(m => m.Title)
+                                    .Select(m => m.First()))
         {
-            <dt>
-                @jobTitle
-            </dt>
-            <dd>
-                <ul>
-                    @foreach (var movieJob in Model.Movies.Where(m => m.JobTitle == jobTitle))
-                    {
-
-                        if (movieJob.JobTitle == jobTitle)
+            if (String.IsNullOrWhiteSpace(job.Title))
+            {
+                <dt>
+                    Unspecified Job Title
+                </dt>
+            }
+            else
+            {
+                <dt>
+                    @job.Title
+                </dt>
+            }
+                <dd>
+                    <ul>
+                        @foreach (var movie in Model.Movies.Where(m => m.Jobs.Any(j => j.Title == job.Title)))
                         {
-
-                            <li>@Html.DisplayFor(model => movieJob.Movie.Title)</li>
-
+                            <li>@Html.DisplayFor(model => movie.Movie.Title)</li>
                         }
-                    }
-                </ul>
+                    </ul>
+                </dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Bio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Bio)
             </dd>
-        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bio)
-        </dd>
-
-    </dl>
+        </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
