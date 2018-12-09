@@ -1,4 +1,4 @@
-﻿@model WorldwideMovieDatabase.Models.Profile
+﻿@model WorldwideMovieDatabase.Models.ProfileMoviesJobsViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -13,36 +13,47 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profile.Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profile.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profile.Name, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profile.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profile.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profile.BirthDate, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.DeathDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profile.DeathDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DeathDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DeathDate, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profile.DeathDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profile.DeathDate, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    @*under construction*@
     <h2>Add Movies</h2>
     <hr />
 
-    <input value="0" id="Movies[0].MovieProfileId" name="Movies[0].MovieProfileId" type="hidden" readonly>
-    <input value="0" id="Movies[0].Movie.ID" name="Movies[0].Movie.ID" type="hidden" readonly>
-    <input value="0" id="Movies[0].Jobs[0].Id" name="Movies[0].Jobs[0].Id" type="hidden" readonly>
+    <select class="form-control" hidden="hidden" id="moviesDropDown">
+        <option value="">Select Movie</option>
+        @foreach (var movie in Model.Movies.OrderBy(m => m.Title))
+        {
+            <option value="@movie.ID">@movie.Title</option>
+        }
+    </select>
+
+    <select class="form-control" hidden="hidden" id="jobTitlesDropDown">
+        <option value="">Select Job Title</option>
+        @foreach (var job in Model.Jobs.OrderBy(j => j.Title))
+        {
+            <option value="@job.Id">@job.Title</option>
+        }
+    </select>
 
     <div id="movies">
     </div>
@@ -52,22 +63,19 @@
     </div>
     <br />
 
-
-    @*////////////////////*@
-
     <div class="form-group">
-        @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profile.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profile.Bio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profile.Bio, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profile.ProfilePicture, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ProfilePicture, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProfilePicture, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profile.ProfilePicture, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profile.ProfilePicture, "", new { @class = "text-danger" })
         </div>
     </div>
 
