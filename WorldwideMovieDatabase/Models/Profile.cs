@@ -41,27 +41,20 @@ namespace WorldwideMovieDatabase.Models
         public string ProfilePicture { get; set; }
     }
 
-    public class ProfileMovieJobsViewModel
+    public class ProfileMoviesJobsViewModel
     {
-        public ProfileMovieJobsViewModel()
+        public ProfileMoviesJobsViewModel()
         {
-            MovieJobs = new List<MovieJobViewModel>();
+            Jobs = new List<Job>();
+            Movies = new List<Movie>();
         }
-
+        
         public Profile Profile { get; set; }
 
-        public IList<MovieJobViewModel> MovieJobs { get; set; }
-    }
+        // All Jobs to display
+        public IList<Job> Jobs { get; set; }
 
-    public class MovieJobViewModel
-    {
-        public MovieJobViewModel()
-        {
-            JobTitles = new List<string>();
-        }
-
-        public Movie Movie { get; set; }
-
-        public IList<string> JobTitles { get; set; }
+        // All Movies to display
+        public IList<Movie> Movies { get; set; }
     }
 }
