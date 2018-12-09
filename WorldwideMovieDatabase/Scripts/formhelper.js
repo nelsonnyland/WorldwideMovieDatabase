@@ -42,12 +42,12 @@ function createOffset2Div(element) {
 function createJobTitlesFormGroup() {
     var formGroup = createFormGroupDiv();
     formGroup.appendChild(createLabel("Job Titles"));
-    formGroup.appendChild(createJobTitleInputDiv());
+    formGroup.appendChild(createJobTitleDropDownDiv());
     return formGroup;
 }
 
-function createJobTitleInputDiv() {
-    var div = createInputDiv();
+function createJobTitleDropDownDiv() {
+    var div = createDropDownDiv();
     div.setAttribute("id", "titles" + movieCount);
     addTitleToGivenParent(movieCount, div);
     return div;
@@ -55,18 +55,18 @@ function createJobTitleInputDiv() {
 
 function createMovieTitleFormGroup() {
     var formGroup = createFormGroupDiv();
-    formGroup.appendChild(createLabel("Movie Title"));
-    formGroup.appendChild(createMovieTitleInputDiv());
+    formGroup.appendChild(createLabel("Movie"));
+    formGroup.appendChild(createMovieTitleDropDownDiv());
     return formGroup;
 }
 
-function createMovieTitleInputDiv() {
-    var div = createInputDiv();
-    div.appendChild(createInput("Movies[" + movieCount + "].Movie.Title"));
+function createMovieTitleDropDownDiv() {
+    var div = createDropDownDiv();
+    div.appendChild(createDropDown("moviesDropDown", "Profile.Movies[" + movieCount + "].MovieId"));
     return div;
 }
 
-function createInputDiv() {
+function createDropDownDiv() {
     var div = document.createElement("div");
     div.setAttribute("class", "col-md-10");
     return div;
@@ -86,16 +86,16 @@ function createFormGroupDiv() {
     return formGroup;
 }
 
-function createInput(name) {
-    var input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("name", name);
-    input.setAttribute("class", "form-control text-body single-line");
-    return input;
+function createDropDown(id, name) {
+    var dropDown = document.getElementById(id).cloneNode(true);
+    dropDown.removeAttribute("id");
+    dropDown.removeAttribute("hidden");
+    dropDown.setAttribute("name", name);
+    return dropDown;
 }
 
-function createJobTitleInput(movieNum) {
-    return createInput("Movies[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Title");
+function createJobTitleDropDown(movieNum) {
+    return createDropDown("jobTitlesDropDown", "Profile.Movies[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Id");
 }
 
 function addTitle(movieNum) {
@@ -104,7 +104,7 @@ function addTitle(movieNum) {
 }
 
 function addTitleToGivenParent(movieNum, parent) {
-    parent.appendChild(createJobTitleInput(movieNum));
+    parent.appendChild(createJobTitleDropDown(movieNum));
     parent.appendChild(document.createElement("br"));
     jobTitleCount[movieNum]++;
 
