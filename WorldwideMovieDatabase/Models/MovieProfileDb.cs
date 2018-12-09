@@ -7,9 +7,8 @@ namespace WorldwideMovieDatabase.Models
 {
     public static class MovieProfileDb
     {
-        public static void AddMovieProfiles(ICollection<MovieProfile> movieProfiles)
+        public static void AddMovieProfiles(ApplicationDbContext db,ICollection<MovieProfile> movieProfiles)
         {
-            var db = new ApplicationDbContext();
             db.MovieProfiles.AddRange(movieProfiles);
             db.SaveChanges();
         }
