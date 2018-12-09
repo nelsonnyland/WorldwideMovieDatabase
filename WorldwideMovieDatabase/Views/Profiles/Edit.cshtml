@@ -37,9 +37,12 @@
             @Html.ValidationMessageFor(model => model.DeathDate, "", new { @class = "text-danger" })
         </div>
     </div>
+    @if (Model.Movies.Count > 0)
+    {
+        <h2>Movies</h2>
+        <hr />
+    }
 
-    <h2>Movies</h2>
-    <hr />
     @{
         int i = 0;
     }
@@ -65,7 +68,7 @@
                     {
                         <li>
                             @*<input value="@movie.MovieProfileId" id="Movies[@i].MovieProfileId" name="Movies[@i].MovieProfileId"
-                                   type="hidden" readonly>*@
+                                type="hidden" readonly>*@
                             @Html.DisplayFor(model => movie.Movie.Title)
                         </li>
                     }
