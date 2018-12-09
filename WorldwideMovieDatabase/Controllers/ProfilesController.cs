@@ -17,17 +17,17 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Profiles
         public ActionResult Index()
         {
-            return View(db.Profiles.ToList());
+            return View(ProfileDb.GetAllProfiles(db));
         }
 
         // GET: Profiles/Details/5
         public ActionResult Profiles(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = ProfileDb.GetAllProfileMovieJobs(id);
+            Profile profile = ProfileDb.GetAllProfileMovieJobs(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,12 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Profiles/Create
         public ActionResult Create()
         {
-            return View();
+            ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
+            {
+                Movies = MovieDb.GetAllMovies(db),
+                Jobs = JobDb.GetAllJobs(db)
+            };
+            return View(model);
         }
 
         // POST: Profiles/Create
@@ -50,38 +55,47 @@ namespace WorldwideMovieDatabase.Controllers
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
         //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
-        public ActionResult Create([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies,Movies.Jobs")] Profile profile)
+        public ActionResult Create([Bind(Include = "Profile")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
+                ProfileDb.AddProfile(db, model.Profile);
                 //AddProfileWithMovies(profileMovieVM);
-                db.Profiles.Add(profile);
-                foreach (var movie in profile.Movies)
-                {
-                    db.Movies.Add(movie.Movie);
-                    movie.ProfileId = profile.ID;
-                    movie.MovieId = movie.Movie.ID;
-                    db.MovieProfiles.Add(movie);
-                }
-                db.SaveChanges();
+                //db.Profiles.Add(model.Profile);
+                //foreach (var movie in model.Movies)
+                //{
+                //    db.Movies.Add(movie.Movie);
+                //    movie.ProfileId = model.ID;
+                //    movie.MovieId = movie.Movie.ID;
+                //    db.MovieProfiles.Add(movie);
+                //}
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(profile);
+            return View(model);
         }
 
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.FindProfile(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+
+            ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
+            {
+                Profile = profile,
+                Movies = MovieDb.GetAllMovies(db),
+                Jobs = JobDb.GetAllJobs(db)
+            };
+
+            return View(model);
         }
 
         // POST: Profiles/Edit/5
@@ -89,34 +103,24 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture,Movies")] Profile profile)
+        public ActionResult Edit([Bind(Include = "Profile")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                foreach (var movie in profile.Movies)
-                {
-                    db.Movies.Add(movie.Movie);
-                    movie.ProfileId = profile.ID;
-                    movie.MovieId = movie.Movie.ID;
-                    db.MovieProfiles.Add(movie);
-                }
-
-                db.Entry(profile).State = EntityState.Modified;
-
-                db.SaveChanges();
+                ProfileDb.UpdateProfile(db, model.Profile);
                 return RedirectToAction("Index");
             }
-            return View(profile);
+            return View(model);
         }
 
         // GET: Profiles/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.FindProfile(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -129,11 +133,12 @@ namespace WorldwideMovieDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Profile profile = db.Profiles.Find(id);
-            db.Profiles.Remove(profile);
-            db.SaveChanges();
+            Profile profile = ProfileDb.FindProfile(db, id);
+            ProfileDb.RemoveProfile(db, profile);
             return RedirectToAction("Index");
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {
@@ -142,44 +147,6 @@ namespace WorldwideMovieDatabase.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        /// <summary>
-        /// Processes data from the ProfileMovieViewModel and makes calls to add it to the database.
-        /// An inputted profile with a collection of movies they worked in and job titles for each
-        /// movie is entered.
-        /// </summary>
-        /// <param name="profileMovieViewModel"></param>
-        public void AddProfileWithMovies(ProfileMovieJobsViewModel profileMovieViewModel)
-        {
-            // Add Profile
-            Profile currProfile = profileMovieViewModel.Profile;
-            ProfileDb.AddProfile(currProfile);
-
-            //Add Movies
-            var movies = new List<Movie>();
-            foreach (var movieJob in profileMovieViewModel.MovieJobs)
-            {
-                movies.Add(movieJob.Movie);
-            }
-            MovieDb.AddMovies(movies);
-
-            // Add MovieProfiles
-            var movieProfiles = new List<MovieProfile>();
-            foreach (var movieJob in profileMovieViewModel.MovieJobs)
-            {
-                // Add all job titles for each movie
-                foreach (var jobTitle in movieJob.JobTitles)
-                {
-                    MovieProfile currMovieProfile = new MovieProfile
-                    {
-                        ProfileId = currProfile.ID,
-                        MovieId = movieJob.Movie.ID
-                    };
-                    movieProfiles.Add(currMovieProfile);
-                }
-            }
-            MovieProfileDb.AddMovieProfiles(movieProfiles);
         }
     }
 }
