@@ -18,9 +18,9 @@ namespace WorldwideMovieDatabase.Models
         /// </summary>
         /// <param name="db"></param>
         /// <param name="profile"></param>
-        public static void AddProfile(ApplicationDbContext db, Profile profile)
+        public static void AddProfile(ApplicationDbContext db, Profile profile, IList<MovieProfile> movies)
         {
-            foreach (var movie in profile.Movies)
+            foreach (var movie in movies)
             {
                 var jobList = new List<Job>();
                 foreach (var currJob in movie.Jobs)
@@ -30,6 +30,8 @@ namespace WorldwideMovieDatabase.Models
                 }
                 movie.Jobs = jobList;
             }
+            profile.Movies = movies;
+
             db.Profiles.Add(profile);
             db.SaveChanges();
         }
@@ -52,9 +54,9 @@ namespace WorldwideMovieDatabase.Models
         /// </summary>
         /// <param name="db"></param>
         /// <param name="profile"></param>
-        public static void UpdateProfile(ApplicationDbContext db, Profile profile)
+        public static void UpdateProfile(ApplicationDbContext db, Profile profile, IList<MovieProfile> movies)
         {
-            foreach (var movie in profile.Movies)
+            foreach (var movie in movies)
             {
                 movie.ProfileId = profile.ID;
 
@@ -66,6 +68,7 @@ namespace WorldwideMovieDatabase.Models
                 }
                 movie.Jobs = jobList;
             }
+            profile.Movies = movies;
             db.MovieProfiles.AddRange(profile.Movies);
             db.Entry(profile).State = EntityState.Modified;
 

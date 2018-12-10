@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    @if (Model.Movies.Count > 0)
+    @if (Model.AllMovies.Count > 0)
     {
         <h2>Movies</h2>
         <hr />
@@ -47,29 +47,25 @@
     @{
         int i = 0;
     }
-    @foreach (var job in Model.Profile.Movies.SelectMany(m => m.Jobs)
-                                .OrderBy(j => j.Title)
-                                .GroupBy(j => j.Title)
-                                .Select(m => m.First()))
-
+    @foreach (var movie in Model.Profile.Movies.OrderBy(m => m.Movie.Title))
     {
-        if (String.IsNullOrWhiteSpace(job.Title))
-        {
-            <h3>Unspecified Job Title</h3>
-        }
-        else
-        {
-            <h3>@job.Title</h3>
-        }
+        <input type="hidden" name="Profile.Movies[@i].Movie.ID" value="@movie.Movie.ID" />
+        <input type="hidden" name="Profile.Movies[@i].Movie.Title" value="@movie.Movie.Title" />
+        <h3>@movie.Movie.Title</h3>
         <div class="form-group">
             <div class="col-md-10">
                 <ul>
-                    @foreach (var movie in Model.Profile.Movies.Where(m => m.Jobs.Any(j => j.Title == job.Title))
-                                                                .OrderBy(m => m.Movie.Title))
+                    @{
+                        int j = 0;
+                    }
+                    @foreach (var job in movie.Jobs.OrderBy(jb => jb.Title))
                     {
-                        <li>
-                            @Html.DisplayFor(model => movie.Movie.Title)
-                        </li>
+                    <li>
+                        <input type="hidden" name="Profile.Movies[@i].Jobs[@j].Title" value="@movie.Jobs[j].Title" />
+                        <input type="hidden" name="Profile.Movies[@i].Jobs[@j].Id" value="@movie.Jobs[j].Id" />
+                        @job.Title
+                    </li>
+                        j++;
                     }
                 </ul>
             </div>
@@ -78,13 +74,12 @@
         i++;
     }
 
-
     <h2>Add Movies</h2>
     <hr />
 
     <select class="form-control" hidden="hidden" id="moviesDropDown">
         <option value="">Select Movie</option>
-        @foreach (var movie in Model.Movies.OrderBy(m => m.Title))
+        @foreach (var movie in Model.AllMovies.OrderBy(m => m.Title))
         {
             <option value="@movie.ID">@movie.Title</option>
         }
@@ -92,7 +87,7 @@
 
     <select class="form-control" hidden="hidden" id="jobTitlesDropDown">
         <option value="">Select Job Title</option>
-        @foreach (var job in Model.Jobs.OrderBy(j => j.Title))
+        @foreach (var job in Model.AllJobs.OrderBy(j => j.Title))
         {
             <option value="@job.Id">@job.Title</option>
         }

@@ -62,7 +62,7 @@ function createMovieTitleFormGroup() {
 
 function createMovieTitleDropDownDiv() {
     var div = createDropDownDiv();
-    div.appendChild(createDropDown("moviesDropDown", "Profile.Movies[" + movieCount + "].MovieId"));
+    div.appendChild(createDropDown("moviesDropDown", "MoviesToAdd[" + movieCount + "].MovieId"));
     return div;
 }
 
@@ -95,7 +95,7 @@ function createDropDown(id, name) {
 }
 
 function createJobTitleDropDown(movieNum) {
-    return createDropDown("jobTitlesDropDown", "Profile.Movies[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Id");
+    return createDropDown("jobTitlesDropDown", "MoviesToAdd[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Id");
 }
 
 function addTitle(movieNum) {

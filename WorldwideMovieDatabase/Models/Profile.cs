@@ -45,16 +45,20 @@ namespace WorldwideMovieDatabase.Models
     {
         public ProfileMoviesJobsViewModel()
         {
-            Jobs = new List<Job>();
-            Movies = new List<Movie>();
+            AllJobs = new List<Job>();
+            AllMovies = new List<Movie>();
+            MoviesToAdd = new List<MovieProfile>();
         }
         
         public Profile Profile { get; set; }
 
-        // All Jobs to display
-        public IList<Job> Jobs { get; set; }
+        // All jobs from Jobs table
+        public IList<Job> AllJobs { get; set; }
 
-        // All Movies to display
-        public IList<Movie> Movies { get; set; }
+        // All movies from Movies table
+        public IList<Movie> AllMovies { get; set; }
+
+        // Movies to dd to profile
+        public IList<MovieProfile> MoviesToAdd { get; set; }
     }
 }

@@ -40,8 +40,8 @@ namespace WorldwideMovieDatabase.Controllers
         {
             ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
             {
-                Movies = MovieDb.GetAllMovies(db),
-                Jobs = JobDb.GetAllJobs(db)
+                AllMovies = MovieDb.GetAllMovies(db),
+                AllJobs = JobDb.GetAllJobs(db)
             };
             return View(model);
         }
@@ -55,21 +55,11 @@ namespace WorldwideMovieDatabase.Controllers
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
         //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
-        public ActionResult Create([Bind(Include = "Profile")] ProfileMoviesJobsViewModel model)
+        public ActionResult Create([Bind(Include = "Profile, MoviesToAdd")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                ProfileDb.AddProfile(db, model.Profile);
-                //AddProfileWithMovies(profileMovieVM);
-                //db.Profiles.Add(model.Profile);
-                //foreach (var movie in model.Movies)
-                //{
-                //    db.Movies.Add(movie.Movie);
-                //    movie.ProfileId = model.ID;
-                //    movie.MovieId = movie.Movie.ID;
-                //    db.MovieProfiles.Add(movie);
-                //}
-                //db.SaveChanges();
+                ProfileDb.AddProfile(db, model.Profile, model.MoviesToAdd);
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -91,8 +81,8 @@ namespace WorldwideMovieDatabase.Controllers
             ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
             {
                 Profile = profile,
-                Movies = MovieDb.GetAllMovies(db),
-                Jobs = JobDb.GetAllJobs(db)
+                AllMovies = MovieDb.GetAllMovies(db),
+                AllJobs = JobDb.GetAllJobs(db)
             };
 
             return View(model);
@@ -103,11 +93,11 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Profile")] ProfileMoviesJobsViewModel model)
+        public ActionResult Edit([Bind(Include = "Profile, MoviesToAdd")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                ProfileDb.UpdateProfile(db, model.Profile);
+                ProfileDb.UpdateProfile(db, model.Profile, model.MoviesToAdd);
                 return RedirectToAction("Index");
             }
             return View(model);
