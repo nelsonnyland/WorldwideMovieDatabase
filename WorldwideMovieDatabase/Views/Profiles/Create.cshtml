@@ -39,6 +39,28 @@
     <h2>Add Movies</h2>
     <hr />
 
+    @*Returns AllMovies and AllJobs on postback so they get returned back to user if needed*@
+    @{
+        int i = 0;
+    }
+    @foreach (var movie in Model.AllMovies.OrderBy(m => m.Title))
+    {
+        <input type="hidden" name="AllMovies[@i].ID" value="@movie.ID" />
+        <input type="hidden" name="AllMovies[@i].Title" value="@movie.Title" />
+        i++;
+    }
+
+    @{
+        i = 0;
+    }
+    @foreach (var job in Model.AllJobs.OrderBy(j => j.Title))
+    {
+        <input type="hidden" name="AllJobs[@i].Id" value="@job.Id" />
+        <input type="hidden" name="AllJobs[@i].Title" value="@job.Title" />
+        i++;
+    }
+
+    @*Used to replicate movies and jobs drop down*@
     <select class="form-control" hidden="hidden" id="moviesDropDown">
         <option value="">Select Movie</option>
         @foreach (var movie in Model.AllMovies.OrderBy(m => m.Title))

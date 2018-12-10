@@ -55,7 +55,7 @@ namespace WorldwideMovieDatabase.Controllers
         //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
         //    "ProfilePicture")] Profile profile)
         //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
-        public ActionResult Create([Bind(Include = "Profile, MoviesToAdd")] ProfileMoviesJobsViewModel model)
+        public ActionResult Create([Bind(Include = "Profile, MoviesToAdd, AllMovies, AllJobs")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Profile, MoviesToAdd")] ProfileMoviesJobsViewModel model)
+        public ActionResult Edit([Bind(Include = "Profile, MoviesToAdd, AllMovies, AllJobs")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {

@@ -58,7 +58,7 @@ namespace WorldwideMovieDatabase.Models
         // All movies from Movies table
         public IList<Movie> AllMovies { get; set; }
 
-        // Movies to dd to profile
+        // Movies to add to profile
         public IList<MovieProfile> MoviesToAdd { get; set; }
     }
 }
