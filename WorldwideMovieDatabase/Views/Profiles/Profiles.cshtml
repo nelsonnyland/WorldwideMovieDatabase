@@ -6,8 +6,11 @@
 <div>
     <h1>@Model.Name</h1>
     <hr />
-    <img src="@Url.Content(Model.ProfilePicture)" />
-    <hr />
+    @if (!String.IsNullOrWhiteSpace(Model.ProfilePicture))
+    {
+        <img src="@Url.Content(Model.ProfilePicture)" />
+        <hr />
+    }
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.BirthDate)
@@ -41,25 +44,25 @@
                     @job.Title
                 </dt>
             }
-                <dd>
-                    <ul>
-                        @foreach (var movie in Model.Movies.Where(m => m.Jobs.Any(j => j.Title == job.Title)))
-                        {
-                            <li>@Html.DisplayFor(model => movie.Movie.Title)</li>
-                        }
-                    </ul>
-                </dd>
-            }
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Bio)
-            </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.Bio)
+                <ul>
+                    @foreach (var movie in Model.Movies.Where(m => m.Jobs.Any(j => j.Title == job.Title)))
+                    {
+                        <li>@Html.DisplayFor(model => movie.Movie.Title)</li>
+                    }
+                </ul>
             </dd>
+        }
 
-        </dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+
+    </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

@@ -11,58 +11,61 @@
     <div>
         <h4>@Model.Title</h4>
         <hr />
-        @*<img src="@Url.Content(Model.MoviePoster)" />*@
-        <hr />
+        @if (!String.IsNullOrWhiteSpace(Model.MoviePoster))
+        {
+            <img src="@Url.Content(Model.MoviePoster)" />
+            <hr />
+        }
         <dl class="dl-horizontal">
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.ReleaseDate)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.ReleaseDate)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.UserRating)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.UserRating)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.MPAARating)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.MPAARating)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.MovieLength)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.MovieLength)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Genre)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Genre)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
-    
+
         </dl>
     </div>
     <p>
