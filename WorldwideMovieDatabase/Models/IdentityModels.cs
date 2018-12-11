@@ -30,7 +30,10 @@ namespace WorldwideMovieDatabase.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<Profile> Profiles { get; set; }
+        public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<MovieProfile> MovieProfiles { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
+
     }
 }

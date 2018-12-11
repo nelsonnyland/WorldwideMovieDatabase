@@ -7,13 +7,13 @@ namespace WorldwideMovieDatabase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ProfileAndMovie : IMigrationMetadata
+    public sealed partial class IListAsModelDataTypes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProfileAndMovie));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IListAsModelDataTypes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810240625068_ProfileAndMovie"; }
+            get { return "201811281746593_IListAsModelDataTypes"; }
         }
         
         string IMigrationMetadata.Source

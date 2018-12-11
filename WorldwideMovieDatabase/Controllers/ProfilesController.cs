@@ -17,17 +17,17 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Profiles
         public ActionResult Index()
         {
-            return View(db.Profiles.ToList());
+            return View(ProfileDb.GetAllProfiles(db));
         }
 
         // GET: Profiles/Details/5
         public ActionResult Profiles(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.GetAllProfileMovieJobs(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,12 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Profiles/Create
         public ActionResult Create()
         {
-            return View();
+            ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
+            {
+                AllMovies = MovieDb.GetAllMovies(db),
+                AllJobs = JobDb.GetAllJobs(db)
+            };
+            return View(model);
         }
 
         // POST: Profiles/Create
@@ -46,33 +51,41 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = 
-            "ID,Name,BirthDate,DeathDate,Movies,Titles,Bio," +
-            "ProfilePicture")] Profile profile)
+        //public ActionResult Create([Bind(Include = 
+        //    "ID,Name,BirthDate,DeathDate,Movies,Bio," +
+        //    "ProfilePicture")] Profile profile)
+        //public ActionResult Create([Bind(Include = "Profile,MovieJobs")] ProfileMovieJobsViewModel profileMovieVM)
+        public ActionResult Create([Bind(Include = "Profile, MoviesToAdd, AllMovies, AllJobs")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Profiles.Add(profile);
-                db.SaveChanges();
+                ProfileDb.AddProfile(db, model.Profile, model.MoviesToAdd);
                 return RedirectToAction("Index");
             }
-
-            return View(profile);
+            return View(model);
         }
 
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.FindProfile(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+
+            ProfileMoviesJobsViewModel model = new ProfileMoviesJobsViewModel
+            {
+                Profile = profile,
+                AllMovies = MovieDb.GetAllMovies(db),
+                AllJobs = JobDb.GetAllJobs(db)
+            };
+
+            return View(model);
         }
 
         // POST: Profiles/Edit/5
@@ -80,25 +93,24 @@ namespace WorldwideMovieDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,BirthDate,DeathDate,Bio,ProfilePicture")] Profile profile)
+        public ActionResult Edit([Bind(Include = "Profile, MoviesToAdd, AllMovies, AllJobs")] ProfileMoviesJobsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(profile).State = EntityState.Modified;
-                db.SaveChanges();
+                ProfileDb.UpdateProfile(db, model.Profile, model.MoviesToAdd);
                 return RedirectToAction("Index");
             }
-            return View(profile);
+            return View(model);
         }
 
         // GET: Profiles/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = ProfileDb.FindProfile(db, id.Value);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -111,11 +123,12 @@ namespace WorldwideMovieDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Profile profile = db.Profiles.Find(id);
-            db.Profiles.Remove(profile);
-            db.SaveChanges();
+            Profile profile = ProfileDb.FindProfile(db, id);
+            ProfileDb.RemoveProfile(db, profile);
             return RedirectToAction("Index");
         }
+
+        
 
         protected override void Dispose(bool disposing)
         {

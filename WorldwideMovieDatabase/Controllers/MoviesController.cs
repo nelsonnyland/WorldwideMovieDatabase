@@ -18,23 +18,25 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View(MovieDb.GetAllMovies(db));
         }
 
         // GET: Movies/Details/5
         public ActionResult Movie(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = MovieDb.GetMovie(db, id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
             }
             return View(movie);
         }
+
+        
 
         // GET: Movies/Create
         public ActionResult Create()
@@ -64,11 +66,11 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Movies/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = MovieDb.GetMovie(db, id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -87,8 +89,7 @@ namespace WorldwideMovieDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+                MovieDb.UpdateMovie(db, movie);
                 return RedirectToAction("Index");
             }
             return View(movie);
@@ -97,11 +98,11 @@ namespace WorldwideMovieDatabase.Controllers
         // GET: Movies/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Movie movie = MovieDb.GetMovie(db, id.Value);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -115,8 +116,7 @@ namespace WorldwideMovieDatabase.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
-            db.SaveChanges();
+            MovieDb.DeleteMovie(db, movie);
             return RedirectToAction("Index");
         }
 

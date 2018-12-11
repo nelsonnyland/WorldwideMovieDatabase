@@ -7,13 +7,13 @@ namespace WorldwideMovieDatabase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ProfileMovieNames : IMigrationMetadata
+    public sealed partial class AddJobsTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProfileMovieNames));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddJobsTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810250459484_ProfileMovieNames"; }
+            get { return "201812040551265_AddJobsTable"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,15 +3,14 @@
 @{
     ViewBag.Title = Model.Name;
 }
+
 <div>
-    <h4>@Model.Name</h4>
+    <h1>@Model.Name</h1>
     <hr />
-    @{
-        if (!String.IsNullOrWhiteSpace(Model.ProfilePicture))
-        {
-            <img src="@Url.Content(Model.ProfilePicture)" />
-            <hr />
-        }
+    @if (!String.IsNullOrWhiteSpace(Model.ProfilePicture))
+    {
+        <img src="@Url.Content(Model.ProfilePicture)" />
+        <hr />
     }
     <dl class="dl-horizontal">
         <dt>
@@ -30,21 +29,31 @@
             @Html.DisplayFor(model => model.DeathDate)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Movies)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Movies)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Titles)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Titles)
-        </dd>
+        @foreach (var job in Model.Movies.SelectMany(m => m.Jobs)
+                                    .GroupBy(m => m.Title)
+                                    .Select(m => m.First()))
+        {
+            if (String.IsNullOrWhiteSpace(job.Title))
+            {
+                <dt>
+                    Unspecified Job Title
+                </dt>
+            }
+            else
+            {
+                <dt>
+                    @job.Title
+                </dt>
+            }
+            <dd>
+                <ul>
+                    @foreach (var movie in Model.Movies.Where(m => m.Jobs.Any(j => j.Title == job.Title)))
+                    {
+                        <li>@Html.DisplayFor(model => movie.Movie.Title)</li>
+                    }
+                </ul>
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.Bio)
