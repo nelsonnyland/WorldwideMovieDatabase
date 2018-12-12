@@ -5,17 +5,15 @@
 }
 
 <h2>Movies</h2>
-<br />
-<form>
-    <input type="button" value="Add" 
-           onclick="window.location.href='@Url.Action("Create", "Movies")'" 
-           class="btn btn-primary" />
-</form>
-<br />
+
 <table class="table">
     <tr>
         <th>
-            &nbsp;
+            <form>
+                <input type="button" value="Add"
+                       onclick="window.location.href='@Url.Action("Create", "Movies")'"
+                       class="btn btn-primary" />
+            </form>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
