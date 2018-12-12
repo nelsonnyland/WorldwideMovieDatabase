@@ -10,9 +10,10 @@
 
     @foreach (var item in Model)
     {
-        <a href="@Url.Action("View", "Movie", new { id = item.ID })">
-            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
-        </a>
+        <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)"/>
+        </a> 
+
         if (++movies == 4) { break; }
     }
 
