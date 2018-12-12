@@ -5,10 +5,13 @@
 }
 
 <h1>Profiles</h1>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<form>
+    <input type="button" value="Add"
+           onclick="window.location.href='@Url.Action("Create", "Profiles")'"
+           class="btn btn-primary" />
+</form>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -29,30 +32,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) 
-{
-    <tr>    
-        <td>
-            <a href="@Url.Action("Profiles", "Profiles", new { item.ID })">
-                <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
-            </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeathDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bio)
-        </td>
-        <td>
-
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("Profiles", "Profiles", new { item.ID })">
+                    <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeathDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+            <td></td>
+        </tr>
+    }
 
 </table>

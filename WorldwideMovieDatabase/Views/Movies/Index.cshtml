@@ -5,10 +5,13 @@
 }
 
 <h2>Movies</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<form>
+    <input type="button" value="Add" 
+           onclick="window.location.href='@Url.Action("Create", "Movies")'" 
+           class="btn btn-primary" />
+</form>
+<br />
 <table class="table">
     <tr>
         <th>
