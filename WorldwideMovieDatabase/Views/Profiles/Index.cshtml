@@ -6,13 +6,14 @@
 
 <h1>Profiles</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            &nbsp;
+            <form>
+                <input type="button" value="Add"
+                       onclick="window.location.href='@Url.Action("Create", "Profiles")'"
+                       class="btn btn-primary" />
+            </form>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -26,33 +27,36 @@
         <th>
             @Html.DisplayNameFor(model => model.Bio)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) 
-{
-    <tr>    
-        <td>
-            <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeathDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("View", "Profiles", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.ProfilePicture != null)
+                {
+                    <a href="@Url.Action("Profiles", "Profiles", new { item.ID })">
+                        <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
+                    </a>
+                }
+                else
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeathDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+        </tr>
+    }
 
 </table>

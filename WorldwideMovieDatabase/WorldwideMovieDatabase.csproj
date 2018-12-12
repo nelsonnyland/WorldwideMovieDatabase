@@ -238,10 +238,14 @@
     </Content>
     <None Include="Properties\PublishProfiles\WorldwideMovieDatabase - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Images\BradPitt.jpg" />
     <Content Include="Images\Braveheart.jpg" />
     <Content Include="Images\Fight Club.jpg" />
     <Content Include="Images\Forrest Gump.jpg" />
     <Content Include="Images\Inception.jpg" />
+    <Content Include="Images\JackNicholson.jpg" />
+    <Content Include="Images\JohnTravolta.jpg" />
+    <Content Include="Images\LeonardoDiCaprio.jpg" />
     <Content Include="Images\MelGibson.jpg" />
     <Content Include="Images\One Flew Over the Cuckoo%27s Nest.jpg" />
     <Content Include="Images\Pulp Fiction.jpg" />
@@ -251,6 +255,7 @@
     <Content Include="Images\The Good, the Bad and the Ugly.jpg" />
     <Content Include="Images\The Oscars.jpg" />
     <Content Include="Images\The Shawshank Redemption.jpg" />
+    <Content Include="Images\TomHanks.jpg" />
     <Content Include="Images\WMDb.JPG" />
     <Content Include="Scripts\formhelper.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -1,24 +1,47 @@
-﻿@{
+﻿@model IEnumerable<WorldwideMovieDatabase.Models.Movie>
+
+@{
     ViewBag.Title = "Worldwide Movie Database";
+    int END_OF_FIRST_ROW = 4;
+    int END_OF_SECOND_ROW = 11;
 }
 
 <div class="jumbotron">
     <h1>Now Playing</h1>
-    <img src="~/Images/Braveheart.jpg" />
-    <img src="~/Images/Fight Club.jpg" />
-    <img src="~/Images/Forrest Gump.jpg" />
-    <img src="~/Images/Pulp Fiction.jpg" />
+    
+    @{ int movieCount = 0; }
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+        </a>
+
+        if (++movieCount == END_OF_FIRST_ROW) { break; }
+    }
+
 </div>
 
 <div class="jumbotron">
     <h1>Coming Soon</h1>
-    <img src="~/Images/Schindler's List.jpg" />
-    <img src="~/Images/The Shawshank Redemption.jpg" />
-    <img src="~/Images/The Godfather.jpg" />
-    <img src="~/Images/The Good, the Bad and the Ugly.jpg" />
+
+    @{ movieCount = 0; }
+    @foreach (var item in Model)
+    {
+        if (++movieCount > END_OF_FIRST_ROW)
+        {
+            <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+                <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+            </a>
+
+            if (++movieCount == END_OF_SECOND_ROW) { break; }
+        }
+    }
+
 </div>
 
 <div class="jumbotron">
     <h1>Events</h1>
-    <img src="~/Images/The Academy Awards.jpg" width="720" />
+    <a href="http://oscar.go.com/">
+        <img src="~/Images/The Academy Awards.jpg" width="720" />
+    </a>
 </div>

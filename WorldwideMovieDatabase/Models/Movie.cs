@@ -47,8 +47,8 @@ namespace WorldwideMovieDatabase.Models
         // Mel Gibson, Sophie Marceau...
         public virtual IList<MovieProfile> Actors { get; set; }
 
-        // "~/Images/..." - path for image
-        [Display(Name = "Movie Poster URL")]
+        // "/Images/..." - path for image
+        [Display(Name = "Movie Poster URL: \"/Images/Braveheart.jpg\"")]
         public string MoviePoster { get; set; }
     }
 }
