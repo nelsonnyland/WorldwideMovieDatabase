@@ -45,9 +45,16 @@
     {
         <tr>
             <td>
-                <a href="@Url.Action("Movie", "Movies", new { item.ID })">
-                    <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" height="50" />
-                </a>
+                @if (item.MoviePoster != null)
+                {
+                    <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+                        <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" height="50" />
+                    </a>
+                }
+                else
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
