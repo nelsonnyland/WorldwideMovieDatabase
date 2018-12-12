@@ -1,24 +1,40 @@
-﻿@{
+﻿@model IEnumerable<WorldwideMovieDatabase.Models.Movie>
+
+@{
     ViewBag.Title = "Worldwide Movie Database";
+    int movies = 0;
 }
 
 <div class="jumbotron">
     <h1>Now Playing</h1>
-    <img src="~/Images/Braveheart.jpg" />
-    <img src="~/Images/Fight Club.jpg" />
-    <img src="~/Images/Forrest Gump.jpg" />
-    <img src="~/Images/Pulp Fiction.jpg" />
+
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("View", "Movie", new { id = item.ID })">
+            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+        </a>
+        if (++movies == 4) { break; }
+    }
+
 </div>
 
 <div class="jumbotron">
     <h1>Coming Soon</h1>
-    <img src="~/Images/Schindler's List.jpg" />
-    <img src="~/Images/The Shawshank Redemption.jpg" />
-    <img src="~/Images/The Godfather.jpg" />
-    <img src="~/Images/The Good, the Bad and the Ugly.jpg" />
+
+    @foreach (var item in Model)
+    {
+        if (++movies >= 4)
+        {
+            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+            if (++movies == 8) { break; }
+        }
+    }
+
 </div>
 
 <div class="jumbotron">
     <h1>Events</h1>
-    <img src="~/Images/The Academy Awards.jpg" width="720" />
+    <a href="http://oscar.go.com/">
+        <img src="~/Images/The Academy Awards.jpg" width="720" />
+    </a>
 </div>
