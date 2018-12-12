@@ -2,19 +2,21 @@
 
 @{
     ViewBag.Title = "Worldwide Movie Database";
-    int movies = 0;
+    int END_OF_FIRST_ROW = 4;
+    int END_OF_SECOND_ROW = 11;
 }
 
 <div class="jumbotron">
     <h1>Now Playing</h1>
-
+    
+    @{ int movieCount = 0; }
     @foreach (var item in Model)
     {
         <a href="@Url.Action("Movie", "Movies", new { item.ID })">
-            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)"/>
-        </a> 
+            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+        </a>
 
-        if (++movies == 4) { break; }
+        if (++movieCount == END_OF_FIRST_ROW) { break; }
     }
 
 </div>
@@ -22,12 +24,16 @@
 <div class="jumbotron">
     <h1>Coming Soon</h1>
 
+    @{ movieCount = 0; }
     @foreach (var item in Model)
     {
-        if (++movies >= 4)
+        if (++movieCount > END_OF_FIRST_ROW)
         {
-            <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
-            if (++movies == 8) { break; }
+            <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+                <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" />
+            </a>
+
+            if (++movieCount == END_OF_SECOND_ROW) { break; }
         }
     }
 
