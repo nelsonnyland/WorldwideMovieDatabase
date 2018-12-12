@@ -42,7 +42,9 @@
     {
         <tr>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" height="50" />
+                <a href="@Url.Action("Movie", "Movies", new { item.ID })">
+                    <img src="@Html.DisplayFor(modelItem => item.MoviePoster)" height="50" />
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -66,9 +68,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("View", "Movie", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                
             </td>
         </tr>
     }

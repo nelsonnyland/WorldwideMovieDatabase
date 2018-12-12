@@ -33,7 +33,9 @@
 {
     <tr>    
         <td>
-            <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
+            <a href="@Url.Action("Profiles", "Profiles", new { item.ID })">
+                <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" height="50" />
+            </a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -48,9 +50,7 @@
             @Html.DisplayFor(modelItem => item.Bio)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("View", "Profiles", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+
         </td>
     </tr>
 }
