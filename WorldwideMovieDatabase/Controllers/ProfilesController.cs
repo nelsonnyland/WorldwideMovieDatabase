@@ -95,6 +95,13 @@ namespace WorldwideMovieDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Profile, MoviesToAdd, AllMovies, AllJobs")] ProfileMoviesJobsViewModel model)
         {
+            foreach (var value in ModelState.Values)
+            {
+                if (value.Errors.Count > 0)
+                {
+                    var list = value.Errors;
+                }
+            }
             if (ModelState.IsValid)
             {
                 ProfileDb.UpdateProfile(db, model.Profile, model.MoviesToAdd);
