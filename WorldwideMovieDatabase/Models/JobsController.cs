@@ -16,17 +16,17 @@ namespace WorldwideMovieDatabase.Models
         // GET: Jobs
         public ActionResult Index()
         {
-            return View(db.Jobs.ToList());
+            return View(JobDb.GetAllJobs(db));
         }
 
         // GET: Jobs/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = JobDb.GetJob(db, id.Value);
             if (job == null)
             {
                 return HttpNotFound();
@@ -49,8 +49,7 @@ namespace WorldwideMovieDatabase.Models
         {
             if (ModelState.IsValid)
             {
-                db.Jobs.Add(job);
-                db.SaveChanges();
+                JobDb.AddJob(db, job);
                 return RedirectToAction("Index");
             }
 
@@ -60,11 +59,11 @@ namespace WorldwideMovieDatabase.Models
         // GET: Jobs/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = JobDb.GetJob(db, id.Value);
             if (job == null)
             {
                 return HttpNotFound();
@@ -81,8 +80,7 @@ namespace WorldwideMovieDatabase.Models
         {
             if (ModelState.IsValid)
             {
-                db.Entry(job).State = EntityState.Modified;
-                db.SaveChanges();
+                JobDb.UpdateJob(db, job);
                 return RedirectToAction("Index");
             }
             return View(job);
@@ -91,11 +89,11 @@ namespace WorldwideMovieDatabase.Models
         // GET: Jobs/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = JobDb.GetJob(db, id.Value);
             if (job == null)
             {
                 return HttpNotFound();
@@ -108,9 +106,7 @@ namespace WorldwideMovieDatabase.Models
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Job job = db.Jobs.Find(id);
-            db.Jobs.Remove(job);
-            db.SaveChanges();
+            JobDb.DeleteJob(db, id);
             return RedirectToAction("Index");
         }
 
