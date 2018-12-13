@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Profiles", FormMethod.Post, new { id = "form" }))
 {
     @Html.AntiForgeryToken()
 

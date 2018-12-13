@@ -123,8 +123,8 @@ function removeBindOnUnselectedInputs() {
 }
 
 function removeBindOnDropDown(idPrefix, count) {
-    for (var i = 0; i < movieCount; i++) {
-        var dropdown = document.getElementById("moviesDropDown" + i);
+    for (var i = 0; i < count; i++) {
+        var dropdown = document.getElementById(idPrefix + i);
         if (dropdown.options[dropdown.selectedIndex].value == "") {
             dropdown.removeAttribute("name");
         }
@@ -135,5 +135,5 @@ window.onload = function () {
     addMovie();
     document.getElementById("addMovie").onclick = addMovie;
 
-    document.getElementById("btnSubmit").onsubmit = removeBindOnUnselectedInputs;
+    document.getElementById("form").onsubmit = removeBindOnUnselectedInputs;
 };
