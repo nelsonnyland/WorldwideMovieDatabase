@@ -216,6 +216,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobDb.cs" />
+    <Compile Include="Models\JobsController.cs" />
     <Compile Include="Models\MovieDb.cs" />
     <Compile Include="Models\MovieProfile.cs" />
     <Compile Include="Models\MovieProfileDb.cs" />
@@ -310,6 +311,11 @@
     <Content Include="Views\Profiles\Profiles.cshtml" />
     <Content Include="Views\Profiles\Edit.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
