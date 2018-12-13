@@ -1,5 +1,10 @@
 ﻿var movieCount = 0;
+
+// count for each movie
 var jobTitleCount = [];
+
+// count for the whole form
+var totalJobTitles = 0;
 
 function addMovie() {
     jobTitleCount.push(0);
@@ -62,7 +67,7 @@ function createMovieTitleFormGroup() {
 
 function createMovieTitleDropDownDiv() {
     var div = createDropDownDiv();
-    div.appendChild(createDropDown("moviesDropDown", "MoviesToAdd[" + movieCount + "].MovieId"));
+    div.appendChild(createDropDown("moviesDropDown", "MoviesToAdd[" + movieCount + "].MovieId", movieCount));
     return div;
 }
 
@@ -86,16 +91,16 @@ function createFormGroupDiv() {
     return formGroup;
 }
 
-function createDropDown(id, name) {
+function createDropDown(id, name, count) {
     var dropDown = document.getElementById(id).cloneNode(true);
-    dropDown.removeAttribute("id");
+    dropDown.setAttribute("id", id + count);
     dropDown.removeAttribute("hidden");
     dropDown.setAttribute("name", name);
     return dropDown;
 }
 
 function createJobTitleDropDown(movieNum) {
-    return createDropDown("jobTitlesDropDown", "MoviesToAdd[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Id");
+    return createDropDown("jobTitlesDropDown", "MoviesToAdd[" + movieNum + "].Jobs[" + jobTitleCount[movieNum] + "].Id", totalJobTitles );
 }
 
 function addTitle(movieNum) {
@@ -107,11 +112,28 @@ function addTitleToGivenParent(movieNum, parent) {
     parent.appendChild(createJobTitleDropDown(movieNum));
     parent.appendChild(document.createElement("br"));
     jobTitleCount[movieNum]++;
+    totalJobTitles++;
 
     console.log("titleCount: " + jobTitleCount[movieNum]);
+}
+
+function removeBindOnUnselectedInputs() {
+    removeBindOnDropDown("moviesDropDown", movieCount);
+    removeBindOnDropDown("jobTitlesDropDown", totalJobTitles);
+}
+
+function removeBindOnDropDown(idPrefix, count) {
+    for (var i = 0; i < count; i++) {
+        var dropdown = document.getElementById(idPrefix + i);
+        if (dropdown.options[dropdown.selectedIndex].value == "") {
+            dropdown.removeAttribute("name");
+        }
+    }
 }
 
 window.onload = function () {
     addMovie();
     document.getElementById("addMovie").onclick = addMovie;
+
+    document.getElementById("form").onsubmit = removeBindOnUnselectedInputs;
 };
