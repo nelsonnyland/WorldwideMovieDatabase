@@ -1,13 +1,11 @@
+![Demonstration](Resources/Images/WMDb.JPG)
+
 # Worldwide Movie Database
 #### *A website hosting an online database storing information about movies and the movie industry.*
 
 *Made using ASP.NET MVC 5*
 
 #
-
-![Demonstration](Resources/Images/WMDb.JPG)
-
-
 
 #### FEATURES:
 
